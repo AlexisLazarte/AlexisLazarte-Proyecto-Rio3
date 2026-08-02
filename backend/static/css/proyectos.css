@@ -1,0 +1,206 @@
+/* ============================================================
+   RÍO 3 — Proyectos
+   proyectos.css — Estilos específicos de la galería pública
+   ============================================================ */
+
+.filtro-categorias {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 1.75rem;
+}
+
+.filtro-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 7px 16px;
+    border-radius: 2px;
+    border: 1px solid var(--color-borde);
+    background-color: #ffffff;
+    color: var(--color-texto-suave);
+    text-decoration: none;
+    transition: all 0.15s;
+}
+
+.filtro-btn:hover {
+    border-color: var(--color-acento-dim);
+    color: var(--color-acento-texto);
+}
+
+.filtro-btn-activo {
+    background-color: var(--color-fondo-oscuro);
+    border-color: var(--color-fondo-oscuro);
+    color: var(--color-acento);
+}
+
+.seccion-galeria { padding: 5rem 0; }
+.grilla-proyectos { margin-top: 1.5rem; }
+
+.item-galeria {
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+    aspect-ratio: 4 / 3;
+}
+
+.item-galeria img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+    transition: transform 0.35s;
+}
+
+.item-galeria:hover img { transform: scale(1.06); }
+
+.item-galeria-etiqueta {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    background: linear-gradient(transparent, rgba(18,20,23,0.88));
+    color: #fff;
+    padding: 2rem 1.25rem 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.item-cat {
+    font-size: 11px;
+    color: var(--color-acento);
+    margin-bottom: 3px;
+    letter-spacing: 0.08em;
+}
+
+.galeria-vacia {
+    text-align: center;
+    padding: 4rem 1rem;
+    color: var(--color-texto-suave);
+    border: 2px dashed var(--color-borde);
+    border-radius: 3px;
+    margin-top: 2rem;
+}
+
+.seccion-cta {
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.seccion-cta h2 {
+    margin-bottom: 1rem;
+    font-size: clamp(22px, 3vw, 32px);
+    color: #ffffff;
+}
+
+.seccion-cta .lead {
+    max-width: 520px;
+    margin: 0 auto 1.75rem;
+    text-align: center;
+}
+
+
+/* ============================================================
+   FICHA TÉCNICA (página de detalle)
+   ============================================================ */
+
+.ficha-tecnica {
+    border-top: 1px solid var(--color-borde);
+    margin-top: 1.5rem;
+}
+
+.ficha-fila {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--color-borde);
+    font-size: 14px;
+}
+
+.ficha-key {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-texto-suave);
+}
+
+.ficha-val {
+    color: var(--color-texto);
+    font-weight: 500;
+}
+
+
+/* ============================================================
+   TARJETA DE GALERÍA — clickeable con link
+   ============================================================ */
+
+a.item-galeria {
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a.item-galeria::after {
+    content: 'Ver proyecto →';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) translateY(8px);
+    background-color: var(--color-acento);
+    color: var(--color-fondo-oscuro);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    border-radius: 2px;
+    opacity: 0;
+    transition: all 0.25s;
+    white-space: nowrap;
+    z-index: 2;
+}
+
+a.item-galeria:hover::after {
+    opacity: 1;
+    transform: translate(-50%, -50%) translateY(0);
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 991px) {
+
+    .filtro-categorias {
+        gap: 6px;
+    }
+
+    .filtro-btn {
+        font-size: 11px;
+        padding: 6px 12px;
+    }
+
+}
+
+@media (max-width: 575px) {
+
+    .seccion-galeria {
+        padding: 3rem 0;
+    }
+
+    .item-galeria {
+        aspect-ratio: 16 / 10;
+    }
+
+    .ficha-fila {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+}

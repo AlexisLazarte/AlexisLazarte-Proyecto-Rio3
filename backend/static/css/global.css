@@ -1,0 +1,1113 @@
+/* ============================================================
+   RÍO 3 — Construcción en Seco
+   global.css — Variables de marca y estilos compartidos
+   Importado en todos los HTML antes del CSS de página.
+   ============================================================ */
+
+
+/* ============================================================
+   VARIABLES DE MARCA
+   ============================================================ */
+
+:root {
+
+    /* Paleta principal */
+    --color-fondo-oscuro:     #121417;
+    --color-acero:            #3a3f47;
+    --color-acero-claro:      #5a606a;
+
+    /* Acento verde-lima */
+    --color-acento:           #d4dd2e;   /* texto sobre fondo oscuro  — ratio 12:1  */
+    --color-acento-dim:       #a8b022;   /* decorativo (bordes, dots)                */
+    --color-acento-texto:     #5c6310;   /* texto sobre fondo claro   — ratio 5.8:1 WCAG AA */
+
+    /* Fondos */
+    --color-papel:            #f4f3ef;
+    --color-papel-dim:        #e8e6df;
+
+    /* Texto */
+    --color-texto:            #1c1f24;
+    --color-texto-suave:      #54585e;   /* ratio 6.4:1 WCAG AA en texto pequeño */
+    --color-texto-muted:      #6b6f76;
+
+    /* Bordes */
+    --color-borde:            #d8d6cf;
+    --color-borde-oscuro:     #2e323a;
+
+    /* Override Bootstrap */
+    --bs-body-bg:             #f4f3ef;
+    --bs-body-color:          #1c1f24;
+    --bs-body-font-family:    'Archivo', sans-serif;
+    --bs-border-radius:       2px;
+
+}
+
+
+/* ============================================================
+   RESET Y BASE
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Archivo', sans-serif;
+    background-color: var(--color-papel);
+    color: var(--color-texto);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+::selection {
+    background-color: var(--color-acento);
+    color: var(--color-fondo-oscuro);
+}
+
+
+/* ============================================================
+   TIPOGRAFÍA
+   ============================================================ */
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+}
+
+.font-mono {
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* Etiqueta de sección (eyebrow) */
+.eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-acento-texto);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.eyebrow::before {
+    content: '';
+    width: 24px;
+    height: 2px;
+    background-color: var(--color-acento-texto);
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.seccion-oscura .eyebrow {
+    color: var(--color-acento);
+}
+
+.seccion-oscura .eyebrow::before {
+    background-color: var(--color-acento);
+}
+
+/* Highlight en títulos */
+.hl {
+    color: var(--color-acento-texto);
+}
+
+.seccion-oscura .hl {
+    color: var(--color-acento);
+}
+
+/* Párrafo destacado */
+.lead {
+    font-size: 17px;
+    color: var(--color-texto-suave);
+}
+
+.seccion-oscura .lead {
+    color: #b9bcc2;
+}
+
+/* Caption debajo de imágenes */
+.img-caption {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--color-texto-suave);
+    margin-top: 0.75rem;
+    letter-spacing: 0.04em;
+}
+
+.seccion-oscura .img-caption {
+    color: #9a9da3;
+}
+
+
+/* ============================================================
+   SECCIÓN OSCURA (fondo --color-fondo-oscuro)
+   ============================================================ */
+
+.seccion-oscura {
+    background-color: var(--color-fondo-oscuro);
+    color: var(--color-papel);
+}
+
+
+/* ============================================================
+   NAVBAR — compartido en todas las páginas
+   ============================================================ */
+
+.navbar {
+    background-color: var(--color-fondo-oscuro) !important;
+    border-bottom: 3px solid var(--color-acento);
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    padding: 14px 0;
+}
+
+.nav-logo-marca {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 2px solid var(--color-acento);
+}
+
+.nav-logo-marca img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.marca-nombre {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 17px;
+    color: #ffffff;
+    display: block;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+}
+
+.marca-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--color-acento);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.navbar-nav .nav-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #c5c8ce;
+    padding: 10px 16px;
+    border-radius: 2px;
+    position: relative;
+    transition: color 0.15s;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ffffff;
+}
+
+.navbar-nav .nav-link.active {
+    color: var(--color-acento);
+}
+
+.navbar-nav .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 16px;
+    right: 16px;
+    height: 2px;
+    background-color: var(--color-acento);
+}
+
+.nav-cta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    background-color: var(--color-acento);
+    color: var(--color-fondo-oscuro) !important;
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    margin-left: 8px;
+    transition: background-color 0.15s;
+    display: inline-block;
+}
+
+.nav-cta:hover {
+    background-color: #ffffff;
+}
+
+
+/* ============================================================
+   BOTONES PROPIOS
+   ============================================================ */
+
+.btn-marca {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background-color: var(--color-acento);
+    color: var(--color-fondo-oscuro);
+    border: none;
+    border-radius: 2px;
+    padding: 14px 26px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.15s, transform 0.15s;
+    cursor: pointer;
+}
+
+.btn-marca:hover {
+    background-color: #ffffff;
+    color: var(--color-fondo-oscuro);
+    transform: translateY(-1px);
+}
+
+.btn-fantasma {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+    padding: 14px 26px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.15s;
+    cursor: pointer;
+}
+
+.btn-fantasma:hover {
+    border-color: #ffffff;
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+
+/* ============================================================
+   BANNER DE PÁGINAS INTERIORES
+   ============================================================ */
+
+.banner-pagina {
+    background-color: var(--color-fondo-oscuro);
+    color: #ffffff;
+    padding: 3.5rem 0 2.75rem;
+    border-bottom: 3px solid var(--color-acento);
+}
+
+.banner-pagina h1 {
+    font-size: clamp(28px, 4vw, 40px);
+    color: #ffffff;
+}
+
+.migas {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--color-acento);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.migas a {
+    color: var(--color-acento);
+    text-decoration: none;
+    opacity: 0.7;
+}
+
+.migas a:hover {
+    opacity: 1;
+}
+
+
+/* ============================================================
+   STRIP MARQUEE
+   ============================================================ */
+
+.strip {
+    background-color: var(--color-acento);
+    color: var(--color-fondo-oscuro);
+    overflow: hidden;
+    white-space: nowrap;
+    border-bottom: 3px solid var(--color-fondo-oscuro);
+    /* Importante: no usar width ni max-width aquí */
+}
+
+.strip-pista {
+    display: inline-flex;
+    /* width: max-content permite que el contenedor sea tan ancho como su contenido */
+    width: max-content;
+    animation: marquee 40s linear infinite;
+    will-change: transform;
+}
+
+.strip-item {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 11px 2.5rem;
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.strip-item::after {
+    content: '/';
+    margin-left: 2.5rem;
+    opacity: 0.5;
+}
+
+@keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+
+
+/* ============================================================
+   TARJETAS DE SERVICIOS
+   ============================================================ */
+
+.tarjeta-servicio {
+    background-color: var(--color-papel);
+    border: 1px solid var(--color-borde);
+    border-top: 3px solid var(--color-borde);
+    padding: 2.25rem 1.75rem;
+    height: 100%;
+    transition: background-color 0.2s, border-top-color 0.2s;
+}
+
+.tarjeta-servicio:hover {
+    background-color: #ffffff;
+    border-top-color: var(--color-acento-dim);
+}
+
+.servicio-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--color-acento-texto);
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+}
+
+.servicio-icono {
+    width: 48px;
+    height: 48px;
+    border: 2px solid var(--color-acero);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+    font-size: 20px;
+}
+
+
+/* ============================================================
+   LISTA DE FEATURES
+   ============================================================ */
+
+.lista-features {
+    list-style: none;
+    padding: 0;
+    margin-top: 1.5rem;
+}
+
+.lista-features li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--color-borde);
+    font-size: 15px;
+}
+
+.lista-features li::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background-color: var(--color-acento-dim);
+    flex-shrink: 0;
+    margin-top: 7px;
+}
+
+.lista-features.oscura li {
+    border-color: rgba(255, 255, 255, 0.12);
+    color: var(--color-papel);
+}
+
+
+/* ============================================================
+   PASOS DEL PROCESO
+   ============================================================ */
+
+.paso-proceso {
+    padding: 2rem 1.5rem 2rem 0;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.paso-proceso:last-child {
+    border-right: none;
+}
+
+.paso-numero {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 42px;
+    color: rgba(255, 255, 255, 0.12);
+    margin-bottom: 0.5rem;
+    line-height: 1;
+}
+
+.paso-proceso h3 {
+    font-size: 16px;
+    color: #ffffff;
+    margin-bottom: 0.4rem;
+}
+
+.paso-proceso p {
+    font-size: 13px;
+    color: #9a9da3;
+    margin: 0;
+}
+
+
+/* ============================================================
+   TARJETAS WHY (por qué elegirnos)
+   ============================================================ */
+
+.tarjeta-why {
+    border-top: 3px solid var(--color-acento-dim);
+    padding: 1.75rem;
+    height: 100%;
+}
+
+.tarjeta-why.oscura {
+    background-color: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.why-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #9a9da3;
+    margin-bottom: 0.75rem;
+}
+
+.tarjeta-why h3 {
+    font-size: 16px;
+    margin-bottom: 0.4rem;
+}
+
+.tarjeta-why:not(.oscura) h3 {
+    color: var(--color-texto);
+}
+
+.tarjeta-why:not(.oscura) p {
+    font-size: 13px;
+    color: var(--color-texto-suave);
+    margin: 0;
+}
+
+.tarjeta-why.oscura h3 {
+    color: #ffffff;
+}
+
+.tarjeta-why.oscura p {
+    font-size: 13px;
+    color: #b9bcc2;
+    margin: 0;
+}
+
+
+/* ============================================================
+   GALERÍA
+   ============================================================ */
+
+.item-galeria {
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+    aspect-ratio: 4 / 3;
+}
+
+.item-galeria picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.item-galeria img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.35s;
+}
+
+.item-galeria:hover img {
+    transform: scale(1.06);
+}
+
+.item-galeria-etiqueta {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(transparent, rgba(18, 20, 23, 0.88));
+    color: #ffffff;
+    padding: 2rem 1.25rem 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+
+/* ============================================================
+   TARJETAS DE CONTACTO
+   ============================================================ */
+
+.tarjeta-contacto {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    text-decoration: none;
+    transition: background-color 0.15s, border-color 0.15s;
+    margin-bottom: 0.75rem;
+}
+
+.tarjeta-contacto:hover {
+    background-color: rgba(212, 221, 46, 0.08);
+    border-color: var(--color-acento);
+}
+
+.contacto-icono {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background-color: var(--color-acento);
+    color: var(--color-fondo-oscuro);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 20px;
+}
+
+.contacto-etiqueta strong {
+    display: block;
+    color: #ffffff;
+    font-size: 15px;
+}
+
+.contacto-etiqueta span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: #b9bcc2;
+}
+
+
+/* ============================================================
+   FORMULARIO — overrides de Bootstrap
+   ============================================================ */
+
+.form-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-texto-suave);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--color-acento-dim);
+    box-shadow: 0 0 0 3px rgba(168, 176, 34, 0.15);
+}
+
+.btn-enviar {
+    width: 100%;
+    background-color: var(--color-fondo-oscuro);
+    color: #ffffff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 14px;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+    margin-top: 0.5rem;
+}
+
+.btn-enviar:hover {
+    background-color: var(--color-acento);
+    color: var(--color-fondo-oscuro);
+}
+
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+.site-footer {
+    background-color: var(--color-fondo-oscuro);
+    color: #9a9da3;
+    border-top: 3px solid var(--color-acento);
+    padding: 2.5rem 0;
+}
+
+.footer-marca {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.footer-logo {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1.5px solid var(--color-acento);
+    flex-shrink: 0;
+}
+
+.footer-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.footer-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: #9a9da3;
+}
+
+
+/* ============================================================
+   HERO — base (cada página puede extender con su propio CSS)
+   ============================================================ */
+
+.hero {
+    background-color: var(--color-fondo-oscuro);
+    color: #ffffff;
+    overflow: hidden;
+}
+
+.hero-inner {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    min-height: 640px;
+}
+
+.hero-izquierda {
+    padding: 4.5rem 3rem 4.5rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--color-acento);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border: 1px solid rgba(212, 221, 46, 0.35);
+    padding: 7px 14px;
+    border-radius: 30px;
+    width: fit-content;
+    margin-bottom: 1.75rem;
+}
+
+.hero-tag .punto {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-acento);
+}
+
+.hero h1 {
+    font-size: clamp(34px, 5vw, 58px);
+    color: #ffffff;
+    margin-bottom: 1.25rem;
+}
+
+.hero h1 em {
+    font-style: normal;
+    color: var(--color-acento);
+}
+
+.hero .lead {
+    color: #b9bcc2;
+    font-size: 18px;
+    margin-bottom: 2.25rem;
+    max-width: 480px;
+}
+
+.hero-stats {
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding-top: 1.75rem;
+    margin-top: 2.75rem;
+}
+
+.hero-stat strong {
+    display: block;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 28px;
+    color: #ffffff;
+}
+
+.hero-stat span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #9a9da3;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.hero-derecha {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-derecha picture,
+.hero-derecha img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(15%) contrast(1.05);
+}
+
+.hero-derecha::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        var(--color-fondo-oscuro) 0%,
+        rgba(18, 20, 23, 0.15) 18%,
+        transparent 45%
+    );
+    z-index: 1;
+}
+
+.hero-derecha::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+    background: repeating-linear-gradient(
+        180deg,
+        var(--color-acento)  0px,
+        var(--color-acento)  18px,
+        transparent          18px,
+        transparent          36px
+    );
+    z-index: 2;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 991px) {
+
+    .hero-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-derecha {
+        min-height: 300px;
+        order: -1;
+    }
+
+    .hero-derecha::after {
+        display: none;
+    }
+
+    .hero-izquierda {
+        padding: 3rem 0;
+    }
+
+    .paso-proceso {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 1.5rem 0;
+    }
+
+}
+
+@media (max-width: 575px) {
+
+    .hero-stats {
+        gap: 1.5rem;
+    }
+
+}
+
+
+/* ============================================================
+   NAVBAR RESPONSIVE — HAMBURGUESA (mobile < 992px)
+   ============================================================ */
+
+/* Ícono hamburguesa en color acento */
+.navbar-toggler {
+    border: 1px solid rgba(212, 221, 46, 0.5);
+    padding: 6px 10px;
+    border-radius: 2px;
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 3px rgba(212, 221, 46, 0.25);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28212%2C221%2C46%2C0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Menú desplegado en mobile */
+@media (max-width: 991px) {
+
+    .navbar-collapse {
+        background-color: var(--color-fondo-oscuro);
+        padding: 1rem 0 1.25rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        margin-top: 4px;
+    }
+
+    .navbar-nav .nav-link {
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .navbar-nav .nav-link.active::after {
+        display: none;
+    }
+
+    .navbar-nav .nav-link.active {
+        color: var(--color-acento);
+        padding-left: 10px;
+        border-left: 3px solid var(--color-acento);
+    }
+
+    .nav-cta {
+        margin-left: 0;
+        margin-top: 0.75rem;
+        display: inline-block;
+        width: fit-content;
+    }
+
+}
+
+
+/* ============================================================
+   HERO — FIXES MOBILE
+   ============================================================ */
+
+@media (max-width: 575px) {
+
+    /* Hero tag: evitar overflow en pantallas muy chicas */
+    .hero-tag {
+        font-size: 11px;
+        padding: 6px 10px;
+        letter-spacing: 0.08em;
+    }
+
+    /* Título hero más compacto */
+    .hero h1 {
+        font-size: clamp(28px, 8vw, 38px);
+    }
+
+    /* Stats en columnas de 2 */
+    .hero-stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.25rem;
+    }
+
+    /* Botones apilados */
+    .hero-izquierda .d-flex {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+}
+
+
+/* ============================================================
+   STRIP MARQUEE — prefers-reduced-motion (accesibilidad)
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .strip-pista {
+        animation: none;
+        overflow-x: auto;
+    }
+
+}
+
+
+/* ============================================================
+   TIPOGRAFÍA — escala fluida en mobile
+   ============================================================ */
+
+@media (max-width: 575px) {
+
+    .eyebrow {
+        font-size: 11px;
+        letter-spacing: 0.12em;
+    }
+
+    .lead {
+        font-size: 15px;
+    }
+
+    /* Tarjetas why en 1 columna en mobile pequeño */
+    .tarjeta-why {
+        margin-bottom: 0;
+    }
+
+}
+
+
+/* ============================================================
+   FORMULARIO — usabilidad en mobile
+   ============================================================ */
+
+@media (max-width: 575px) {
+
+    .panel-formulario {
+        padding: 1.5rem;
+    }
+
+    /* Inputs más altos para facilitar el toque */
+    .form-control,
+    .form-select {
+        padding: 12px 13px;
+        font-size: 16px; /* evita zoom automático en iOS */
+    }
+
+    .btn-enviar {
+        padding: 16px;
+        font-size: 14px;
+    }
+
+}
+
+
+/* ============================================================
+   GALERÍA — 1 columna en mobile
+   ============================================================ */
+
+@media (max-width: 575px) {
+
+    .item-galeria {
+        aspect-ratio: 16 / 10;
+    }
+
+}
+
+
+/* ============================================================
+   TARJETAS DE CONTACTO — mobile
+   ============================================================ */
+
+@media (max-width: 575px) {
+
+    .tarjeta-contacto {
+        padding: 1rem 1.1rem;
+    }
+
+    .contacto-icono {
+        width: 38px;
+        height: 38px;
+        font-size: 17px;
+    }
+
+}
+
+
+/* ============================================================
+   PANTALLAS GRANDES (>1400px)
+   ============================================================ */
+
+@media (min-width: 1400px) {
+
+    .container {
+        max-width: 1320px;
+    }
+
+    .hero h1 {
+        font-size: 64px;
+    }
+
+}

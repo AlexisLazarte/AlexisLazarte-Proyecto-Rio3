@@ -1,0 +1,173 @@
+{% extends "admin_rio3/base_admin.html" %}
+
+{% block titulo %}Dashboard — Panel Admin Río 3{% endblock %}
+
+{% block admin_contenido %}
+
+    <div class="admin-page-header">
+        <div>
+            <div class="eyebrow mb-1">Panel de administración</div>
+            <h1>Dashboard</h1>
+            <p>Bienvenido, {{ request.user.first_name|default:request.user.username }}.</p>
+        </div>
+        <a href="{% url 'admin_proyecto_nuevo' %}" class="btn-marca">
+            + Nuevo proyecto
+        </a>
+    </div>
+
+
+    <!-- MÉTRICAS -->
+    <section aria-label="Métricas del panel">
+        <div class="row g-3 mb-4">
+
+            <div class="col-6 col-md-3">
+                <div class="metrica-card">
+                    <div class="metrica-label">Total proyectos</div>
+                    <div class="metrica-valor" aria-label="{{ metricas.total }} proyectos en total">
+                        {{ metricas.total }}
+                    </div>
+                    <div class="metrica-sub">en la base de datos</div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-3">
+                <div class="metrica-card">
+                    <div class="metrica-label">Publicados</div>
+                    <div class="metrica-valor" aria-label="{{ metricas.publicados }} proyectos publicados">
+                        {{ metricas.publicados }}
+                    </div>
+                    <div class="metrica-sub">visibles en el sitio</div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-3">
+                <div class="metrica-card">
+                    <div class="metrica-label">Borradores</div>
+                    <div class="metrica-valor" aria-label="{{ metricas.borradores }} proyectos en borrador">
+                        {{ metricas.borradores }}
+                    </div>
+                    <div class="metrica-sub">pendientes de publicar</div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-3">
+                <div class="metrica-card">
+                    <div class="metrica-label">Fotos adicionales</div>
+                    <div class="metrica-valor" aria-label="{{ metricas.fotos }} fotos adicionales">
+                        {{ metricas.fotos }}
+                    </div>
+                    <div class="metrica-sub">imágenes subidas</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- TABLA PROYECTOS RECIENTES -->
+    <section aria-label="Proyectos recientes">
+        <div class="tabla-card">
+            <div class="tabla-header">
+                <h2>Proyectos recientes</h2>
+                <a href="{% url 'admin_proyectos_lista' %}" style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--color-acento-texto);">
+                    Ver todos →
+                </a>
+            </div>
+            <div class="table-responsive">
+                <table aria-label="Listado de proyectos recientes">
+                    <thead>
+                        <tr>
+                            <th scope="col">Foto</th>
+                            <th scope="col">Proyecto</th>
+                            <th scope="col">Categoría</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for proyecto in proyectos_recientes %}
+                            <tr>
+                                <td>
+                                    {% if proyecto.foto_portada %}
+                                        <img
+                                            src="{{ proyecto.foto_portada.url }}"
+                                            alt="Portada de {{ proyecto.titulo }}"
+                                            class="tabla-thumb"
+                                            loading="lazy"
+                                            width="48"
+                                            height="36"
+                                        >
+                                    {% else %}
+                                        <div class="tabla-thumb-placeholder" aria-label="Sin foto">
+                                            <i class="ti ti-photo" aria-hidden="true"></i>
+                                        </div>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <div class="titulo-proyecto">{{ proyecto.titulo }}</div>
+                                    {% if proyecto.ubicacion %}
+                                        <div class="subtitulo-proyecto">{{ proyecto.ubicacion }}</div>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if proyecto.categoria %}
+                                        <span class="badge-cat">{{ proyecto.categoria.nombre }}</span>
+                                    {% else %}
+                                        <span style="color:var(--color-texto-suave);font-size:12px;">Sin categoría</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if proyecto.esta_publicado %}
+                                        <span class="badge-estado badge-publicado">
+                                            <span class="badge-estado-dot" aria-hidden="true"></span>
+                                            Publicado
+                                        </span>
+                                    {% else %}
+                                        <span class="badge-estado badge-borrador">
+                                            <span class="badge-estado-dot" aria-hidden="true"></span>
+                                            Borrador
+                                        </span>
+                                    {% endif %}
+                                </td>
+                                <td style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--color-texto-suave);">
+                                    <time datetime="{{ proyecto.fecha_carga|date:'Y-m-d' }}">
+                                        {{ proyecto.fecha_carga|date:"d/m/Y" }}
+                                    </time>
+                                </td>
+                                <td>
+                                    <div class="acciones-tabla" role="group" aria-label="Acciones para {{ proyecto.titulo }}">
+                                        <a
+                                            href="{% url 'admin_proyecto_editar' proyecto.pk %}"
+                                            class="btn-accion"
+                                            aria-label="Editar {{ proyecto.titulo }}"
+                                        >
+                                            <i class="ti ti-edit" aria-hidden="true"></i>
+                                        </a>
+                                        <a
+                                            href="{% url 'admin_proyecto_eliminar' proyecto.pk %}"
+                                            class="btn-accion eliminar"
+                                            aria-label="Eliminar {{ proyecto.titulo }}"
+                                        >
+                                            <i class="ti ti-trash" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% empty %}
+                            <tr>
+                                <td colspan="6" style="text-align:center;padding:2rem;color:var(--color-texto-suave);">
+                                    Todavía no hay proyectos cargados.
+                                    <a href="{% url 'admin_proyecto_nuevo' %}" style="color:var(--color-acento-texto);">
+                                        Crear el primero →
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

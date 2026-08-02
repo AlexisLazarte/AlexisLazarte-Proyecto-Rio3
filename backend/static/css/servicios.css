@@ -1,0 +1,162 @@
+/* ============================================================
+   RÍO 3 — Construcción en Seco
+   servicios.css — Estilos específicos de: servicios.html
+   Depende de: bootstrap/bootstrap.min.css + css/global.css
+   ============================================================ */
+
+
+/* ============================================================
+   SECCIÓN: CADA SERVICIO (steel, drywall, revestimientos)
+   ============================================================ */
+
+.seccion-servicio {
+    padding: 5rem 0;
+}
+
+.seccion-servicio-dim {
+    padding: 5rem 0;
+    background-color: var(--color-papel-dim);
+}
+
+
+/* ============================================================
+   SECCIÓN: TABIQUES MÓVILES (fondo oscuro)
+   ============================================================ */
+
+.seccion-tabiques {
+    padding: 5rem 0;
+}
+
+.seccion-tabiques .lead {
+    margin-bottom: 3rem;
+}
+
+
+/* ============================================================
+   SECCIÓN: CTA FINAL
+   ============================================================ */
+
+.seccion-cta {
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.seccion-cta h2 {
+    margin-bottom: 1rem;
+    font-size: clamp(22px, 3vw, 32px);
+}
+
+.seccion-cta .lead {
+    max-width: 520px;
+    margin: 0 auto 1.75rem;
+    text-align: center;
+}
+
+
+/* ============================================================
+   EPS REVESTIMIENTO — placeholder de imagen
+   ============================================================ */
+
+.eps-placeholder {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background-color: var(--color-papel-dim);
+    border: 2px dashed var(--color-borde);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.eps-placeholder i {
+    font-size: 64px;
+    color: var(--color-borde);
+}
+
+
+/* ============================================================
+   SECCIÓN STANDS PARA FERIAS
+   ============================================================ */
+
+.seccion-stands {
+    padding: 5rem 0;
+}
+
+.stands-titulo-grilla {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #9a9da3;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Tarjeta de cada feria */
+.feria-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem 1.25rem;
+    border-radius: 3px;
+    transition: background-color 0.15s, border-color 0.15s;
+}
+
+.feria-card:hover {
+    background-color: rgba(212, 221, 46, 0.06);
+    border-color: rgba(212, 221, 46, 0.3);
+}
+
+.feria-card-mas {
+    border-style: dashed;
+    border-color: rgba(212, 221, 46, 0.25);
+}
+
+.feria-card-mas:hover {
+    border-color: rgba(212, 221, 46, 0.5);
+}
+
+.feria-icono {
+    font-size: 24px;
+    flex-shrink: 0;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.06);
+    border-radius: 3px;
+}
+
+.feria-info strong {
+    display: block;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.feria-info span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #9a9da3;
+    letter-spacing: 0.03em;
+}
+
+@media (max-width: 575px) {
+
+    .feria-card {
+        padding: 0.85rem 1rem;
+    }
+
+    .feria-icono {
+        font-size: 20px;
+        width: 36px;
+        height: 36px;
+    }
+
+}

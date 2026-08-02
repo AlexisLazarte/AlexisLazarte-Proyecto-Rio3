@@ -1,0 +1,223 @@
+/* ============================================================
+   RÍO 3 — Construcción en Seco
+   nosotros.css — Estilos específicos de: nosotros.html
+   Depende de: bootstrap/bootstrap.min.css + css/global.css
+   ============================================================ */
+
+
+/* ============================================================
+   SECCIÓN: DESCRIPCIÓN DE LA EMPRESA
+   ============================================================ */
+
+.seccion-descripcion {
+    padding: 5rem 0;
+}
+
+.seccion-descripcion .lead + .lead {
+    margin-top: 1rem;
+}
+
+
+/* ============================================================
+   SECCIÓN: VALORES
+   ============================================================ */
+
+.seccion-valores {
+    padding: 5rem 0;
+}
+
+
+/* ============================================================
+   SECCIÓN: CTA FINAL
+   ============================================================ */
+
+.seccion-cta {
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.seccion-cta h2 {
+    margin-bottom: 1rem;
+    font-size: clamp(22px, 3vw, 32px);
+}
+
+.seccion-cta .lead {
+    max-width: 520px;
+    margin: 0 auto 1.75rem;
+    text-align: center;
+}
+
+
+/* ============================================================
+   SECCIÓN HISTORIA Y CRECIMIENTO
+   ============================================================ */
+
+.seccion-historia {
+    padding: 5rem 0;
+    background-color: var(--color-papel-dim);
+}
+
+
+/* --- Línea de tiempo --- */
+
+.linea-tiempo {
+    position: relative;
+    margin-bottom: 4rem;
+}
+
+/* Línea vertical conectora */
+.linea-tiempo::before {
+    content: '';
+    position: absolute;
+    left: 90px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background-color: var(--color-borde);
+}
+
+.hito {
+    display: grid;
+    grid-template-columns: 90px 40px 1fr;
+    gap: 0 0;
+    margin-bottom: 2.5rem;
+    position: relative;
+}
+
+.hito-ultimo {
+    margin-bottom: 0;
+}
+
+/* Año */
+.hito-anio {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--color-acento-texto);
+    padding-top: 2px;
+    text-align: right;
+    padding-right: 20px;
+}
+
+/* Columna con el punto y la línea */
+.hito-linea {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.hito-punto {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--color-acento-dim);
+    border: 2px solid var(--color-papel-dim);
+    flex-shrink: 0;
+    margin-top: 4px;
+    position: relative;
+    z-index: 1;
+}
+
+.hito-punto-activo {
+    background-color: var(--color-acento-texto);
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    box-shadow: 0 0 0 4px rgba(92, 99, 16, 0.15);
+}
+
+/* Contenido del hito */
+.hito-contenido {
+    padding-left: 1.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.hito-contenido h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--color-texto);
+    margin-bottom: 6px;
+}
+
+.hito-contenido p {
+    font-size: 14px;
+    color: var(--color-texto-suave);
+    line-height: 1.65;
+    margin: 0;
+}
+
+
+/* --- Números destacados --- */
+
+.numeros-destacados {
+    border-top: 1px solid var(--color-borde);
+    padding-top: 3rem;
+}
+
+.numero-card {
+    background-color: #ffffff;
+    border: 1px solid var(--color-borde);
+    border-top: 3px solid var(--color-acento-dim);
+    padding: 1.5rem 1.25rem;
+    text-align: center;
+}
+
+.numero-card strong {
+    display: block;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 36px;
+    color: var(--color-texto);
+    line-height: 1;
+    margin-bottom: 6px;
+}
+
+.numero-card span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-texto-suave);
+}
+
+
+/* --- Responsive línea de tiempo --- */
+
+@media (max-width: 575px) {
+
+    .linea-tiempo::before {
+        left: 16px;
+    }
+
+    .hito {
+        grid-template-columns: 40px 1fr;
+        gap: 0;
+    }
+
+    /* Ocultar el año en mobile, lo mostramos dentro del contenido */
+    .hito-anio {
+        display: none;
+    }
+
+    .hito-contenido {
+        padding-left: 1rem;
+    }
+
+    /* Mostrar el año como prefijo del título */
+    .hito-contenido h3::before {
+        content: attr(data-anio);
+        display: block;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--color-acento-texto);
+        margin-bottom: 4px;
+        letter-spacing: 0.08em;
+    }
+
+    .numero-card strong {
+        font-size: 28px;
+    }
+
+}

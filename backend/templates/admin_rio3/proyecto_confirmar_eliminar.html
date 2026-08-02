@@ -1,0 +1,49 @@
+{% extends "admin_rio3/base_admin.html" %}
+
+{% block titulo %}Eliminar proyecto — Panel Admin Río 3{% endblock %}
+
+{% block admin_contenido %}
+
+    <div class="admin-page-header">
+        <div>
+            <div class="eyebrow mb-1">Proyectos</div>
+            <h1>Eliminar proyecto</h1>
+        </div>
+    </div>
+
+    <div class="form-card-admin" style="max-width: 560px;">
+        <div class="form-card-admin-header" style="border-bottom-color: #f09595;">
+            <div>
+                <h2 style="color: #f09595;">Confirmá la eliminación</h2>
+                <p>Esta acción no se puede deshacer.</p>
+            </div>
+        </div>
+        <div class="form-card-admin-body">
+
+            <p style="font-size: 15px; margin-bottom: 1.5rem;">
+                ¿Estás seguro de que querés eliminar el proyecto
+                <strong>"{{ proyecto.titulo }}"</strong>?
+                También se van a eliminar todas sus fotos asociadas.
+            </p>
+
+            <div class="d-flex gap-3" role="group" aria-label="Confirmar o cancelar eliminación">
+                <form method="post" aria-label="Confirmar eliminación de {{ proyecto.titulo }}">
+                    {% csrf_token %}
+                    <button
+                        type="submit"
+                        class="btn-publicar"
+                        style="background-color: #a32d2d;"
+                        aria-label="Sí, eliminar el proyecto {{ proyecto.titulo }}"
+                    >
+                        Sí, eliminar
+                    </button>
+                </form>
+                <a href="{% url 'admin_proyectos_lista' %}" class="btn-borrador">
+                    Cancelar
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

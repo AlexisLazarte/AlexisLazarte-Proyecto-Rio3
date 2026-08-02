@@ -1,0 +1,229 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block titulo %}Nosotros — Río 3 Construcción en Seco{% endblock %}
+{% block css_extra %}<link rel="stylesheet" href="{% static 'css/nosotros.css' %}">{% endblock %}
+
+{% block contenido %}
+
+    <!-- BANNER -->
+    <div class="banner-pagina">
+        <div class="container">
+            <div class="migas">
+                <a href="{% url 'inicio' %}">Inicio</a>
+                <span>/</span>
+                <span>Nosotros</span>
+            </div>
+            <h1>Quiénes somos</h1>
+        </div>
+    </div>
+
+
+    <!-- DESCRIPCIÓN -->
+    <section class="seccion-descripcion">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+
+                <div class="col-12 col-md-6">
+                    <div class="eyebrow mb-2">Nuestra empresa</div>
+                    <h2 class="h2 mb-3" style="font-size: clamp(22px, 3vw, 30px);">
+                        Especialistas en <span class="hl">construcción en seco</span>
+                    </h2>
+                    <p class="lead">
+                        Río 3 es una empresa de Río Tercero, Córdoba, dedicada
+                        exclusivamente a la construcción en seco: steel framing,
+                        drywall y revestimientos. Trabajamos en obra nueva,
+                        ampliaciones y remodelaciones, siempre con mano de obra
+                        propia y materiales certificados.
+                    </p>
+                    <p class="lead">
+                        Creemos en la construcción rápida sin resignar calidad:
+                        cada obra se planifica, se cotiza con claridad y se ejecuta
+                        con el mismo equipo de principio a fin.
+                    </p>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <picture>
+                        <source srcset="{% static 'imagenes/steel-obra.webp' %}" type="image/webp">
+                        <img
+                            src="{% static 'imagenes/steel-obra.jpg' %}"
+                            alt="Equipo de Río 3 trabajando en obra de steel framing"
+                            width="900"
+                            height="600"
+                            fetchpriority="high"
+                            class="img-fluid rounded-1"
+                        >
+                    </picture>
+                    <div class="img-caption">// Equipo de obra — montaje de estructura</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- HISTORIA -->
+    <section class="seccion-historia">
+        <div class="container">
+
+            <div class="eyebrow mb-2">Nuestra historia</div>
+            <h2 class="h2 mb-3" style="font-size: clamp(22px, 3vw, 30px);">
+                Cómo <span class="hl">crecimos</span>
+            </h2>
+            <p class="lead mb-5">
+                Desde un pequeño equipo en Río Tercero hasta convertirnos en
+                referentes de la construcción en seco en Córdoba.
+            </p>
+
+            <div class="linea-tiempo">
+
+                <div class="hito">
+                    <div class="hito-anio">2013</div>
+                    <div class="hito-linea"><div class="hito-punto"></div></div>
+                    <div class="hito-contenido">
+                        <h3>Los primeros pasos</h3>
+                        <p>
+                            Río 3 nació como una empresa familiar en Río Tercero con
+                            una apuesta clara: la construcción en seco como alternativa
+                            real a la obra tradicional.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="hito">
+                    <div class="hito-anio">2016</div>
+                    <div class="hito-linea"><div class="hito-punto"></div></div>
+                    <div class="hito-contenido">
+                        <h3>Incorporamos el steel framing</h3>
+                        <p>
+                            Incorporamos el steel framing como sistema estructural
+                            completo. El equipo creció y comenzamos a trabajar en
+                            toda la provincia de Córdoba.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="hito">
+                    <div class="hito-anio">2019</div>
+                    <div class="hito-linea"><div class="hito-punto"></div></div>
+                    <div class="hito-contenido">
+                        <h3>Expansión a ferias y eventos</h3>
+                        <p>
+                            Participamos por primera vez en grandes ferias nacionales
+                            construyendo stands. Expoagro y La Rural marcaron un
+                            antes y un después.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="hito">
+                    <div class="hito-anio">2022</div>
+                    <div class="hito-linea"><div class="hito-punto"></div></div>
+                    <div class="hito-contenido">
+                        <h3>EPS y nuevos sistemas</h3>
+                        <p>
+                            Sumamos el EPS Revestimiento ampliando nuestra propuesta
+                            para clientes que buscan eficiencia energética.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="hito hito-ultimo">
+                    <div class="hito-anio">Hoy</div>
+                    <div class="hito-linea"><div class="hito-punto hito-punto-activo"></div></div>
+                    <div class="hito-contenido">
+                        <h3>Referentes en construcción en seco</h3>
+                        <p>
+                            Somos un equipo consolidado con más de 10 años de
+                            experiencia, presencia en ferias nacionales y cientos
+                            de obras ejecutadas.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row g-3 numeros-destacados">
+                <div class="col-6 col-md-3">
+                    <div class="numero-card">
+                        <strong>+10</strong>
+                        <span>Años de experiencia</span>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="numero-card">
+                        <strong>+200</strong>
+                        <span>Obras ejecutadas</span>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="numero-card">
+                        <strong>+15</strong>
+                        <span>Ferias y exposiciones</span>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="numero-card">
+                        <strong>5</strong>
+                        <span>Servicios especializados</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- VALORES -->
+    <section class="seccion-valores seccion-oscura">
+        <div class="container">
+
+            <div class="eyebrow mb-2">Nuestros valores</div>
+            <h2 class="h2 mb-5">Lo que nos <span class="hl">define</span></h2>
+
+            <div class="row g-4">
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="tarjeta-why oscura">
+                        <div class="why-num">— 01</div>
+                        <h3>Compromiso</h3>
+                        <p>Cumplimos los plazos acordados con el cliente.</p>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="tarjeta-why oscura">
+                        <div class="why-num">— 02</div>
+                        <h3>Transparencia</h3>
+                        <p>Presupuesto claro, sin costos ocultos durante la obra.</p>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="tarjeta-why oscura">
+                        <div class="why-num">— 03</div>
+                        <h3>Calidad</h3>
+                        <p>Materiales certificados y terminaciones prolijas.</p>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="tarjeta-why oscura">
+                        <div class="why-num">— 04</div>
+                        <h3>Cercanía</h3>
+                        <p>Atención directa y personalizada en cada etapa.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- CTA -->
+    <section class="seccion-cta seccion-oscura">
+        <div class="container">
+            <h2>Hablemos de tu proyecto</h2>
+            <p class="lead">Contactanos y te asesoramos sin compromiso.</p>
+            <a href="{% url 'contacto_enviar' %}" class="btn-marca">Ir a contacto</a>
+        </div>
+    </section>
+
+{% endblock %}

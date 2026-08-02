@@ -1,0 +1,21 @@
+[Unit]
+Description=Gunicorn — Río 3 Django
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/rio3/backend
+Environment="PATH=/var/www/rio3/venv/bin"
+EnvironmentFile=/var/www/rio3/backend/.env
+ExecStart=/var/www/rio3/venv/bin/gunicorn \
+    --workers 3 \
+    --bind unix:/run/gunicorn/rio3.sock \
+    rio3.wsgi:application
+ExecReload=/bin/kill -s HUP $MAINPID
+RuntimeDirectory=gunicorn
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target

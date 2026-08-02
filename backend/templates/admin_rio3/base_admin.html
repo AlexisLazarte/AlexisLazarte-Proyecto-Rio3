@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="noindex, nofollow">
+        <title>{% block titulo %}Panel Admin — Río 3{% endblock %}</title>
+        <meta name="description" content="Panel de administración de Río 3 Construcción en Seco.">
+
+        {% load static %}
+
+        <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+            media="print" onload="this.media='all'"
+        >
+        <noscript>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
+        </noscript>
+        <link rel="stylesheet" href="{% static 'css/global.css' %}">
+        <link rel="stylesheet" href="{% static 'css/panel-admin.css' %}">
+    </head>
+
+    <body>
+
+        <!-- NAVBAR ADMIN -->
+        <nav class="navbar navbar-expand-lg" aria-label="Navegación del panel admin">
+            <div class="container-fluid px-3">
+
+                <a href="{% url 'inicio' %}" class="navbar-brand" aria-label="Volver al sitio público">
+                    <div class="nav-logo-marca">
+                        <picture>
+                            <source srcset="{% static 'imagenes/logo.webp' %}" type="image/webp">
+                            <img
+                                src="{% static 'imagenes/logo.jpg' %}"
+                                alt="Logo Río 3"
+                                width="120"
+                                height="120"
+                                loading="lazy"
+                            >
+                        </picture>
+                    </div>
+                    <div>
+                        <span class="marca-nombre">RÍO 3</span>
+                        <span class="marca-sub">Panel de administración</span>
+                    </div>
+                </a>
+
+                <div class="d-flex align-items-center gap-3">
+                    <div class="d-none d-md-flex align-items-center gap-2" aria-label="Usuario activo">
+                        <div
+                            style="width:8px;height:8px;border-radius:50%;background-color:var(--color-acento);"
+                            aria-hidden="true"
+                        ></div>
+                        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#9a9da3;text-transform:uppercase;letter-spacing:0.06em;">
+                            {{ request.user.username }}
+                        </span>
+                    </div>
+                    <a
+                        href="{% url 'inicio' %}"
+                        target="_blank"
+                        rel="noopener"
+                        aria-label="Ver el sitio público en nueva pestaña"
+                        style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:#9a9da3;text-decoration:none;display:flex;align-items:center;gap:5px;"
+                    >
+                        Ver sitio
+                    </a>
+                    <a href="{% url 'admin_logout' %}" class="nav-cta" style="font-size:11px;padding:8px 14px;">
+                        Cerrar sesión
+                    </a>
+                </div>
+
+            </div>
+        </nav>
+
+
+        <main id="contenido-principal">
+            <div class="admin-wrapper">
+
+                <!-- SIDEBAR -->
+                <aside class="admin-sidebar" aria-label="Menú de administración">
+                    <nav aria-label="Navegación admin">
+
+                        <div class="sidebar-seccion-titulo" aria-hidden="true">Contenido</div>
+
+                        <a
+                            href="{% url 'admin_dashboard' %}"
+                            class="sidebar-link {% if request.resolver_match.url_name == 'admin_dashboard' %}active{% endif %}"
+                            {% if request.resolver_match.url_name == 'admin_dashboard' %}aria-current="page"{% endif %}
+                        >
+                            <i class="ti ti-layout-dashboard" aria-hidden="true"></i>
+                            Dashboard
+                        </a>
+
+                        <a
+                            href="{% url 'admin_proyectos_lista' %}"
+                            class="sidebar-link {% if 'admin_proyecto' in request.resolver_match.url_name %}active{% endif %}"
+                            {% if 'admin_proyecto' in request.resolver_match.url_name %}aria-current="page"{% endif %}
+                        >
+                            <i class="ti ti-photo" aria-hidden="true"></i>
+                            Proyectos
+                        </a>
+
+                        <div class="sidebar-seccion-titulo" aria-hidden="true">Sistema</div>
+
+                        <a href="/django-admin/" class="sidebar-link" target="_blank" rel="noopener" aria-label="Admin Django (abre en nueva pestaña)">
+                            <i class="ti ti-settings" aria-hidden="true"></i>
+                            Admin Django
+                        </a>
+
+                    </nav>
+                </aside>
+
+
+                <!-- CONTENIDO PRINCIPAL -->
+                <div class="admin-contenido">
+
+                    {% if messages %}
+                        <div role="region" aria-label="Notificaciones" class="mb-3">
+                            {% for message in messages %}
+                                <div
+                                    class="alert alert-{% if message.tags == 'error' %}danger{% else %}success{% endif %} alert-dismissible fade show"
+                                    role="alert"
+                                >
+                                    {{ message }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar notificación"></button>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+
+                    {% block admin_contenido %}{% endblock %}
+
+                </div>
+
+            </div>
+        </main>
+
+
+        <footer class="site-footer" role="contentinfo">
+            <div class="container-fluid px-3 d-flex justify-content-between align-items-center flex-wrap gap-3">
+                <span class="footer-meta">RÍO 3 — Panel de administración · Solo acceso autorizado</span>
+            </div>
+        </footer>
+
+        <script src="{% static 'bootstrap/bootstrap.bundle.min.js' %}"></script>
+        {% block js_extra %}{% endblock %}
+
+    </body>
+
+</html>

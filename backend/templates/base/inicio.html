@@ -1,0 +1,363 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block titulo %}Río 3 — Construcción en Seco | Steel Framing, Drywall, Revestimientos{% endblock %}
+{% block css_extra %}<link rel="stylesheet" href="{% static 'css/index.css' %}">{% endblock %}
+
+{% block contenido %}
+
+    <!-- ================================================
+         HERO
+         ================================================ -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-inner">
+
+                <div class="hero-izquierda">
+
+                    <div class="hero-tag">
+                        <span class="punto"></span>
+                        Río Tercero · Córdoba
+                    </div>
+
+                    <h1>
+                        Construcción en seco<br>
+                        <em>rápida, sólida</em> y a medida
+                    </h1>
+
+                    <p class="lead">
+                        Steel framing, drywall y revestimientos para obra nueva,
+                        ampliaciones y remodelaciones. Terminación profesional,
+                        tiempos de obra reducidos.
+                    </p>
+
+                    <div class="d-flex gap-3 flex-wrap">
+                        <a
+                            href="https://wa.me/5493571556670?text=Hola%20R%C3%ADo%203%2C%20quiero%20pedir%20un%20presupuesto."
+                            target="_blank"
+                            rel="noopener"
+                            class="btn-marca"
+                        >
+                            Pedir presupuesto
+                        </a>
+                        <a href="{% url 'proyectos' %}" class="btn-fantasma">
+                            Ver proyectos
+                        </a>
+                    </div>
+
+                    <div class="hero-stats">
+                        <div class="hero-stat"><strong>+10</strong><span>Años de obra</span></div>
+                        <div class="hero-stat"><strong>3</strong>  <span>Especialidades</span></div>
+                        <div class="hero-stat"><strong>100%</strong><span>En seco</span></div>
+                    </div>
+
+                </div>
+
+                <div class="hero-derecha">
+                    <picture>
+                        <source srcset="{% static 'imagenes/steel-estructura.webp' %}" type="image/webp">
+                        <img
+                            src="{% static 'imagenes/steel-estructura.jpg' %}"
+                            alt="Estructura de steel framing en construcción"
+                            width="900"
+                            height="675"
+                            fetchpriority="high"
+                        >
+                    </picture>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ================================================
+         STRIP MARQUEE
+         ================================================ -->
+    <div class="strip" aria-hidden="true">
+        <div class="strip-pista">
+            <div class="strip-item">Steel framing</div>
+            <div class="strip-item">Drywall</div>
+            <div class="strip-item">Revestimientos</div>
+            <div class="strip-item">EPS Revestimiento</div>
+            <div class="strip-item">Cielorrasos</div>
+            <div class="strip-item">Stands para ferias</div>
+            <div class="strip-item">Steel framing</div>
+            <div class="strip-item">Drywall</div>
+            <div class="strip-item">Revestimientos</div>
+            <div class="strip-item">EPS Revestimiento</div>
+            <div class="strip-item">Cielorrasos</div>
+            <div class="strip-item">Stands para ferias</div>
+            <div class="strip-item">Steel framing</div>
+            <div class="strip-item">Drywall</div>
+            <div class="strip-item">Revestimientos</div>
+            <div class="strip-item">EPS Revestimiento</div>
+            <div class="strip-item">Cielorrasos</div>
+            <div class="strip-item">Stands para ferias</div>
+            <div class="strip-item">Steel framing</div>
+            <div class="strip-item">Drywall</div>
+            <div class="strip-item">Revestimientos</div>
+            <div class="strip-item">EPS Revestimiento</div>
+            <div class="strip-item">Cielorrasos</div>
+            <div class="strip-item">Stands para ferias</div>
+        </div>
+    </div>
+
+
+    <!-- ================================================
+         SERVICIOS PREVIEW
+         ================================================ -->
+    <section class="servicios-preview">
+        <div class="container">
+
+            <div class="eyebrow mb-2">Qué hacemos</div>
+            <h2 class="h2 mb-2">
+                Tres especialidades, <span class="hl">un solo equipo</span>
+            </h2>
+            <p class="lead">
+                Manejamos toda la cadena de la construcción en seco,
+                de la estructura a la terminación final.
+            </p>
+
+            <div class="row g-1">
+
+                <div class="col-12 col-md-4">
+                    <div class="tarjeta-servicio">
+                        <div class="servicio-num">01</div>
+                        <div class="servicio-icono">⊞</div>
+                        <h3 class="fs-5 mb-2">Steel framing</h3>
+                        <p class="mb-0">
+                            Estructuras metálicas livianas para viviendas y ampliaciones.
+                            Rapidez de montaje y gran resistencia sísmica y al viento.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-4">
+                    <div class="tarjeta-servicio">
+                        <div class="servicio-num">02</div>
+                        <div class="servicio-icono">▦</div>
+                        <h3 class="fs-5 mb-2">Drywall</h3>
+                        <p class="mb-0">
+                            Tabiquería interior, cielorrasos suspendidos e iluminación
+                            integrada. Terminación lista para pintar.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-4">
+                    <div class="tarjeta-servicio">
+                        <div class="servicio-num">03</div>
+                        <div class="servicio-icono">▤</div>
+                        <h3 class="fs-5 mb-2">Revestimientos</h3>
+                        <p class="mb-0">
+                            Revestimientos exteriores e interiores en chapa, madera
+                            y siding. Estética moderna y protección duradera.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ================================================
+         PROCESO
+         ================================================ -->
+    <section class="seccion-proceso seccion-oscura">
+        <div class="container">
+
+            <div class="eyebrow mb-2">Cómo trabajamos</div>
+            <h2 class="h2 mb-0">
+                De la visita técnica <span class="hl">a la entrega de obra</span>
+            </h2>
+
+            <div class="row g-0 proceso-borde-top">
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="paso-proceso">
+                        <div class="paso-numero" aria-hidden="true">01</div>
+                        <h3>Visita y relevamiento</h3>
+                        <p>Evaluamos el terreno o espacio y entendemos tu proyecto.</p>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="paso-proceso">
+                        <div class="paso-numero" aria-hidden="true">02</div>
+                        <h3>Presupuesto</h3>
+                        <p>Cotización detallada por materiales y mano de obra.</p>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="paso-proceso">
+                        <div class="paso-numero" aria-hidden="true">03</div>
+                        <h3>Estructura</h3>
+                        <p>Montaje de steel framing y cerramientos en obra.</p>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="paso-proceso">
+                        <div class="paso-numero" aria-hidden="true">04</div>
+                        <h3>Terminación</h3>
+                        <p>Drywall, revestimientos y entrega lista para habitar.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ================================================
+         FEATURE: STEEL FRAMING
+         ================================================ -->
+    <section class="seccion-feature">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+
+                <div class="col-12 col-md-6">
+                    <picture>
+                        <source srcset="{% static 'imagenes/steel-obra.webp' %}" type="image/webp">
+                        <img
+                            src="{% static 'imagenes/steel-obra.jpg' %}"
+                            alt="Trabajadores montando estructura de steel framing"
+                            width="900" height="600" loading="lazy" class="img-fluid rounded-1"
+                        >
+                    </picture>
+                    <div class="img-caption">// Montaje de estructura — obra en Río Tercero</div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="eyebrow mb-2">Steel framing</div>
+                    <h2 class="h2 mb-3" style="font-size: clamp(22px, 3vw, 30px);">
+                        Estructuras livianas, <span class="hl">obra más rápida</span>
+                    </h2>
+                    <p class="lead">
+                        El sistema de perfiles de acero galvanizado reduce drásticamente
+                        los tiempos de obra frente a la construcción tradicional.
+                    </p>
+                    <ul class="lista-features">
+                        <li>Hasta 40% menos tiempo de obra</li>
+                        <li>Excelente comportamiento sísmico</li>
+                        <li>Mayor superficie útil por menor espesor de muro</li>
+                        <li>Compatible con todo tipo de terminación</li>
+                    </ul>
+                    <a href="{% url 'servicios' %}" class="btn-marca mt-4 d-inline-flex">
+                        Ver todos los servicios
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ================================================
+         FEATURE: CIELORRASOS (fondo dim)
+         ================================================ -->
+    <section class="seccion-feature-dim">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+
+                <div class="col-12 col-md-6 order-md-2">
+                    <picture>
+                        <source srcset="{% static 'imagenes/cielo.webp' %}" type="image/webp">
+                        <img
+                            src="{% static 'imagenes/cielo.jpg' %}"
+                            alt="Cielorraso de drywall con iluminación LED integrada"
+                            width="800" height="600" loading="lazy" class="img-fluid rounded-1"
+                        >
+                    </picture>
+                    <div class="img-caption">// Cielorraso suspendido con iluminación LED</div>
+                </div>
+
+                <div class="col-12 col-md-6 order-md-1">
+                    <div class="eyebrow mb-2">Drywall</div>
+                    <h2 class="h2 mb-3" style="font-size: clamp(22px, 3vw, 30px);">
+                        Cielorrasos e iluminación <span class="hl">integrada</span>
+                    </h2>
+                    <p class="lead">
+                        Diseñamos cielorrasos suspendidos con niveles, luz indirecta
+                        perimetral y spots empotrados.
+                    </p>
+                    <ul class="lista-features">
+                        <li>Cielorrasos a dos o más niveles</li>
+                        <li>Iluminación LED perimetral indirecta</li>
+                        <li>Aislación térmica y acústica</li>
+                        <li>Terminación lista para pintar</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ================================================
+         WHY US
+         ================================================ -->
+    <section class="seccion-why">
+        <div class="container">
+
+            <div class="eyebrow mb-2">Por qué elegirnos</div>
+            <h2 class="h2 mb-5">
+                Construcción en seco <span class="hl">hecha bien</span>
+            </h2>
+
+            <div class="row g-4">
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="tarjeta-why bg-white">
+                        <div class="why-num">— A</div>
+                        <h3>Rapidez real</h3>
+                        <p>Obra seca, sin tiempos de fragüe ni secado. Avanzamos todos los días.</p>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="tarjeta-why bg-white">
+                        <div class="why-num">— B</div>
+                        <h3>Mano de obra propia</h3>
+                        <p>Equipo estable, sin subcontrataciones. Misma cuadrilla de principio a fin.</p>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="tarjeta-why bg-white">
+                        <div class="why-num">— C</div>
+                        <h3>Materiales certificados</h3>
+                        <p>Perfilería galvanizada y placas de primera calidad, con garantía.</p>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="tarjeta-why bg-white">
+                        <div class="why-num">— D</div>
+                        <h3>Presupuesto claro</h3>
+                        <p>Cotización detallada antes de empezar, sin sorpresas en la obra.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ================================================
+         CTA FINAL
+         ================================================ -->
+    <section class="seccion-cta seccion-oscura">
+        <div class="container">
+            <h2>¿Tenés un proyecto en mente?</h2>
+            <p class="lead">
+                Contanos qué necesitás y te respondemos con un presupuesto a medida.
+            </p>
+            <a
+                href="https://wa.me/5493571556670?text=Hola%20R%C3%ADo%203%2C%20quiero%20pedir%20un%20presupuesto."
+                target="_blank"
+                rel="noopener"
+                class="btn-marca"
+            >
+                Escribinos por WhatsApp
+            </a>
+        </div>
+    </section>
+
+{% endblock %}

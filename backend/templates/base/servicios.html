@@ -1,0 +1,314 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block titulo %}Servicios — Río 3 Construcción en Seco{% endblock %}
+{% block css_extra %}<link rel="stylesheet" href="{% static 'css/servicios.css' %}">{% endblock %}
+
+{% block contenido %}
+
+    <!-- BANNER -->
+    <div class="banner-pagina">
+        <div class="container">
+            <div class="migas">
+                <a href="{% url 'inicio' %}">Inicio</a>
+                <span>/</span>
+                <span>Servicios</span>
+            </div>
+            <h1>Nuestros servicios</h1>
+        </div>
+    </div>
+
+
+    <!-- 01 STEEL FRAMING — Texto izquierda / Imagen derecha -->
+    <section class="seccion-servicio">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+
+                <div class="col-12 col-md-6">
+                    <div class="eyebrow mb-2">01 — Steel framing</div>
+                    <h2 class="h2 mb-3" style="font-size: clamp(22px, 3vw, 30px);">
+                        Estructura metálica liviana
+                    </h2>
+                    <p class="lead">
+                        Sistema constructivo con perfiles de acero galvanizado que
+                        reemplaza la mampostería tradicional. Ideal para viviendas,
+                        ampliaciones y entrepisos.
+                    </p>
+                    <ul class="lista-features">
+                        <li>Perfiles galvanizados certificados</li>
+                        <li>Diseño estructural calculado por proyecto</li>
+                        <li>Resistencia sísmica y al viento superior</li>
+                        <li>Montaje en obra seca, sin escombros</li>
+                    </ul>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <picture>
+                        <source srcset="{% static 'imagenes/steel-obra.webp' %}" type="image/webp">
+                        <img
+                            src="{% static 'imagenes/steel-obra.jpg' %}"
+                            alt="Trabajadores montando estructura de steel framing"
+                            width="900"
+                            height="600"
+                            fetchpriority="high"
+                            class="img-fluid rounded-1"
+                        >
+                    </picture>
+                    <div class="img-caption">// Montaje de estructura — obra en Río Tercero</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- 02 DRYWALL — Imagen izquierda / Texto derecha (fondo dim) -->
+    <section class="seccion-servicio-dim">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+
+                <div class="col-12 col-md-6">
+                    <picture>
+                        <source srcset="{% static 'imagenes/cielo.webp' %}" type="image/webp">
+                        <img
+                            src="{% static 'imagenes/cielo.jpg' %}"
+                            alt="Cielorraso de drywall con luz indirecta LED"
+                            width="800"
+                            height="600"
+                            loading="lazy"
+                            class="img-fluid rounded-1"
+                        >
+                    </picture>
+                    <div class="img-caption">// Cielorraso de drywall con iluminación integrada</div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="eyebrow mb-2">02 — Drywall</div>
+                    <h2 class="h2 mb-3" style="font-size: clamp(22px, 3vw, 30px);">
+                        Tabiquería y cielorrasos
+                    </h2>
+                    <p class="lead">
+                        Placas de yeso sobre estructura de acero para divisiones
+                        internas, cielorrasos y diseños arquitectónicos a medida.
+                    </p>
+                    <ul class="lista-features">
+                        <li>Tabiques divisorios simples y dobles</li>
+                        <li>Cielorrasos rectos, curvos y a desnivel</li>
+                        <li>Aislación térmica y acústica incorporada</li>
+                        <li>Placas verdes para zonas húmedas</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- 03 REVESTIMIENTOS — Texto izquierda / Imagen derecha -->
+    <section class="seccion-servicio">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+
+                <div class="col-12 col-md-6">
+                    <div class="eyebrow mb-2">03 — Revestimientos</div>
+                    <h2 class="h2 mb-3" style="font-size: clamp(22px, 3vw, 30px);">
+                        Terminación exterior e interior
+                    </h2>
+                    <p class="lead">
+                        Revestimientos en chapa, siding y madera que protegen la
+                        estructura y le dan identidad a la fachada.
+                    </p>
+                    <ul class="lista-features">
+                        <li>Siding y chapa acanalada</li>
+                        <li>Revestimientos símil madera</li>
+                        <li>Aislación hidrófuga incorporada</li>
+                        <li>Asesoramiento en combinación de materiales</li>
+                    </ul>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <picture>
+                        <source srcset="{% static 'imagenes/revestimiento.webp' %}" type="image/webp">
+                        <img
+                            src="{% static 'imagenes/revestimiento.jpg' %}"
+                            alt="Vivienda con revestimiento exterior en chapa y madera"
+                            width="900"
+                            height="600"
+                            loading="lazy"
+                            class="img-fluid rounded-1"
+                        >
+                    </picture>
+                    <div class="img-caption">// Fachada con revestimiento mixto chapa y madera</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- 04 EPS REVESTIMIENTO — Imagen izquierda / Texto derecha (fondo dim) -->
+    <section class="seccion-servicio-dim">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+
+                <div class="col-12 col-md-6">
+                    <div class="eps-placeholder" aria-hidden="true"></div>
+                    <div class="img-caption">// Sistema EPS — aislación y revestimiento integrados</div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="eyebrow mb-2">04 — Servicio adicional</div>
+                    <h2 class="h2 mb-3" style="font-size: clamp(22px, 3vw, 30px);">
+                        EPS Revestimiento
+                    </h2>
+                    <p class="lead">
+                        Sistema de aislación y revestimiento exterior en poliestireno
+                        expandido. Combina eficiencia térmica, bajo peso y terminación
+                        estética en una sola solución.
+                    </p>
+                    <ul class="lista-features">
+                        <li>Excelente aislación térmica y acústica</li>
+                        <li>Reduce significativamente el puente térmico</li>
+                        <li>Material liviano y de rápida instalación</li>
+                        <li>Compatible con distintas terminaciones exteriores</li>
+                        <li>Ideal para clima de Córdoba</li>
+                    </ul>
+                    <a
+                        href="https://wa.me/5493571556670?text=Hola%20R%C3%ADo%203%2C%20quiero%20consultar%20sobre%20EPS."
+                        target="_blank"
+                        rel="noopener"
+                        class="btn-marca mt-4 d-inline-flex"
+                    >
+                        Consultar sobre EPS
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- 05 STANDS PARA FERIAS (fondo oscuro) -->
+    <section class="seccion-stands seccion-oscura">
+        <div class="container">
+            <div class="row g-5 align-items-start">
+
+                <div class="col-12 col-lg-5">
+                    <div class="eyebrow mb-2">05 — Stands y eventos</div>
+                    <h2 class="h2 mb-3" style="font-size: clamp(22px, 3vw, 30px);">
+                        Stands para <span class="hl">ferias y exposiciones</span>
+                    </h2>
+                    <p class="lead">
+                        Diseñamos y montamos stands con estructura steel framing,
+                        terminaciones drywall y revestimientos para exposiciones
+                        comerciales y ferias del sector agropecuario, automotriz
+                        y de la construcción.
+                    </p>
+                    <ul class="lista-features oscura">
+                        <li>Estructura desmontable y reutilizable</li>
+                        <li>Montaje y desmontaje rápido entre eventos</li>
+                        <li>Diseño a medida del espacio y la marca</li>
+                        <li>Terminaciones prolijas listas para pintar o empapelar</li>
+                        <li>Transporte e instalación en el predio</li>
+                    </ul>
+                    <a
+                        href="https://wa.me/5493571556670?text=Hola%20R%C3%ADo%203%2C%20quiero%20consultar%20sobre%20stands."
+                        target="_blank"
+                        rel="noopener"
+                        class="btn-marca mt-4 d-inline-flex"
+                    >
+                        Cotizar stand
+                    </a>
+                </div>
+
+                <div class="col-12 col-lg-7">
+                    <div class="stands-titulo-grilla">Ferias y exposiciones donde trabajamos</div>
+                    <div class="row g-3">
+
+                        <div class="col-12 col-sm-6">
+                            <div class="feria-card">
+                                <div class="feria-icono">🌾</div>
+                                <div class="feria-info">
+                                    <strong>Expoagro</strong>
+                                    <span>Agro · San Nicolás, Buenos Aires</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-sm-6">
+                            <div class="feria-card">
+                                <div class="feria-icono">🐄</div>
+                                <div class="feria-info">
+                                    <strong>La Rural</strong>
+                                    <span>Agropecuario · Buenos Aires</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-sm-6">
+                            <div class="feria-card">
+                                <div class="feria-icono">🔧</div>
+                                <div class="feria-info">
+                                    <strong>Automechanika</strong>
+                                    <span>Automotriz · Buenos Aires</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-sm-6">
+                            <div class="feria-card">
+                                <div class="feria-icono">🏗</div>
+                                <div class="feria-info">
+                                    <strong>BATEV</strong>
+                                    <span>Construcción · Buenos Aires</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-sm-6">
+                            <div class="feria-card">
+                                <div class="feria-icono">🏢</div>
+                                <div class="feria-info">
+                                    <strong>Expo Construir</strong>
+                                    <span>Construcción · Córdoba</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-sm-6">
+                            <div class="feria-card feria-card-mas">
+                                <div class="feria-icono">＋</div>
+                                <div class="feria-info">
+                                    <strong>Y muchas más</strong>
+                                    <span>Consultanos por tu evento</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- CTA FINAL -->
+    <section class="seccion-cta seccion-oscura">
+        <div class="container">
+            <h2>¿Necesitás un presupuesto?</h2>
+            <p class="lead">
+                Escribinos y te respondemos con los detalles de tu obra.
+            </p>
+            <a
+                href="https://wa.me/5493571556670?text=Hola%20R%C3%ADo%203%2C%20quiero%20pedir%20un%20presupuesto."
+                target="_blank"
+                rel="noopener"
+                class="btn-marca"
+            >
+                Hablar por WhatsApp
+            </a>
+        </div>
+    </section>
+
+{% endblock %}

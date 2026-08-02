@@ -1,0 +1,140 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block titulo %}{{ proyecto.titulo }} — Río 3 Construcción en Seco{% endblock %}
+{% block css_extra %}<link rel="stylesheet" href="{% static 'css/proyectos.css' %}">{% endblock %}
+
+{% block contenido %}
+
+    <!-- BANNER -->
+    <div class="banner-pagina">
+        <div class="container">
+            <div class="migas">
+                <a href="{% url 'inicio' %}">Inicio</a>
+                <span>/</span>
+                <a href="{% url 'proyectos' %}">Proyectos</a>
+                <span>/</span>
+                <span>{{ proyecto.titulo }}</span>
+            </div>
+            <h1>{{ proyecto.titulo }}</h1>
+        </div>
+    </div>
+
+
+    <section class="seccion-galeria">
+        <div class="container">
+
+            <!-- DATOS DEL PROYECTO -->
+            <div class="row g-5 mb-5">
+
+                <!-- FOTO PORTADA -->
+                <div class="col-12 col-md-7">
+                    <img
+                        src="{{ proyecto.foto_portada.url }}"
+                        alt="{{ proyecto.titulo }}"
+                        class="img-fluid rounded-1"
+                        style="width: 100%;"
+                        fetchpriority="high"
+                    >
+                </div>
+
+                <!-- INFO -->
+                <div class="col-12 col-md-5">
+
+                    {% if proyecto.categoria %}
+                        <div class="eyebrow mb-3">{{ proyecto.categoria.nombre }}</div>
+                    {% endif %}
+
+                    <h2 style="font-size: clamp(20px, 3vw, 28px); margin-bottom: 1rem;">
+                        {{ proyecto.titulo }}
+                    </h2>
+
+                    {% if proyecto.descripcion %}
+                        <p class="lead mb-4">{{ proyecto.descripcion }}</p>
+                    {% endif %}
+
+                    <!-- Ficha técnica -->
+                    <div class="ficha-tecnica">
+
+                        {% if proyecto.ubicacion %}
+                            <div class="ficha-fila">
+                                <span class="ficha-key">Ubicación</span>
+                                <span class="ficha-val">{{ proyecto.ubicacion }}</span>
+                            </div>
+                        {% endif %}
+
+                        {% if proyecto.anio %}
+                            <div class="ficha-fila">
+                                <span class="ficha-key">Año</span>
+                                <span class="ficha-val">{{ proyecto.anio }}</span>
+                            </div>
+                        {% endif %}
+
+                        {% if proyecto.superficie %}
+                            <div class="ficha-fila">
+                                <span class="ficha-key">Superficie</span>
+                                <span class="ficha-val">{{ proyecto.superficie }}</span>
+                            </div>
+                        {% endif %}
+
+                    </div>
+
+                    <a
+                        href="https://wa.me/5493571556670?text=Hola%20R%C3%ADo%203%2C%20vi%20el%20proyecto%20{{ proyecto.titulo|urlencode }}%20y%20quiero%20consultar."
+                        target="_blank"
+                        rel="noopener"
+                        class="btn-marca mt-4 d-inline-flex"
+                    >
+                        Consultar este trabajo
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- FOTOS ADICIONALES -->
+            {% if fotos %}
+                <div class="eyebrow mb-3">Más fotos</div>
+                <div class="row g-3">
+                    {% for foto in fotos %}
+                        <div class="col-12 col-sm-6 col-lg-4">
+                            <div class="item-galeria">
+                                <img
+                                    src="{{ foto.foto.url }}"
+                                    alt="{{ proyecto.titulo }} — foto {{ forloop.counter }}"
+                                    loading="lazy"
+                                >
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <!-- VOLVER -->
+            <div class="mt-5">
+                <a href="{% url 'proyectos' %}" class="btn-fantasma" style="color: var(--color-texto); border-color: var(--color-borde);">
+                    ← Volver a proyectos
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- CTA -->
+    <section class="seccion-cta seccion-oscura">
+        <div class="container">
+            <h2>¿Te gustó este trabajo?</h2>
+            <p class="lead">Contanos tu proyecto y te hacemos un presupuesto.</p>
+            <a
+                href="https://wa.me/5493571556670?text=Hola%20R%C3%ADo%203%2C%20quiero%20pedir%20un%20presupuesto."
+                target="_blank"
+                rel="noopener"
+                class="btn-marca"
+            >
+                Pedir presupuesto
+            </a>
+        </div>
+    </section>
+
+{% endblock %}

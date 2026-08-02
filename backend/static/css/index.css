@@ -1,0 +1,77 @@
+/* ============================================================
+   RÍO 3 — Construcción en Seco
+   index.css — Estilos específicos de: index.html
+   Depende de: bootstrap/bootstrap.min.css + css/global.css
+   ============================================================ */
+
+
+/* ============================================================
+   SECCIÓN: SERVICIOS PREVIEW
+   ============================================================ */
+
+.servicios-preview {
+    padding: 5rem 0;
+}
+
+.servicios-preview .lead {
+    margin-bottom: 3rem;
+}
+
+
+/* ============================================================
+   SECCIÓN: PROCESO
+   ============================================================ */
+
+.seccion-proceso {
+    padding: 5rem 0;
+}
+
+.proceso-borde-top {
+    border-top: 1px solid var(--color-borde-oscuro);
+    margin-top: 3rem;
+    padding-top: 0;
+}
+
+
+/* ============================================================
+   SECCIÓN: FEATURE — STEEL FRAMING
+   ============================================================ */
+
+.seccion-feature {
+    padding: 5rem 0;
+}
+
+.seccion-feature-dim {
+    padding: 5rem 0;
+    background-color: var(--color-papel-dim);
+}
+
+
+/* ============================================================
+   SECCIÓN: WHY US
+   ============================================================ */
+
+.seccion-why {
+    padding: 5rem 0;
+}
+
+
+/* ============================================================
+   SECCIÓN: CTA FINAL
+   ============================================================ */
+
+.seccion-cta {
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.seccion-cta h2 {
+    margin-bottom: 1rem;
+    font-size: clamp(22px, 3vw, 32px);
+}
+
+.seccion-cta .lead {
+    max-width: 560px;
+    margin: 0 auto 1.75rem;
+    text-align: center;
+}

@@ -1,0 +1,31 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block titulo %}Consulta enviada — Río 3{% endblock %}
+
+{% block contenido %}
+
+    <div class="banner-pagina">
+        <div class="container">
+            <div class="migas">
+                <a href="{% url 'inicio' %}">Inicio</a>
+                <span>/</span>
+                <span>Consulta enviada</span>
+            </div>
+            <h1>¡Consulta recibida!</h1>
+        </div>
+    </div>
+
+    <section class="seccion-oscura py-5 text-center">
+        <div class="container py-4">
+            <p class="lead mx-auto mb-4" style="max-width: 520px;">
+                Gracias por escribirnos. Te vamos a contactar a la brevedad
+                para darte más información sobre tu proyecto.
+            </p>
+            <a href="{% url 'inicio' %}" class="btn-marca">
+                Volver al inicio
+            </a>
+        </div>
+    </section>
+
+{% endblock %}

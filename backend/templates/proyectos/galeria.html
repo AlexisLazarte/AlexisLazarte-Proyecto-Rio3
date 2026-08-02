@@ -1,0 +1,111 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block titulo %}Proyectos — Río 3 Construcción en Seco{% endblock %}
+{% block css_extra %}<link rel="stylesheet" href="{% static 'css/proyectos.css' %}">{% endblock %}
+
+{% block contenido %}
+
+    <!-- BANNER -->
+    <div class="banner-pagina">
+        <div class="container">
+            <div class="migas">
+                <a href="{% url 'inicio' %}">Inicio</a>
+                <span>/</span>
+                <span>Proyectos</span>
+            </div>
+            <h1>Trabajos realizados</h1>
+        </div>
+    </div>
+
+
+    <!-- GALERÍA -->
+    <section class="seccion-galeria">
+        <div class="container">
+
+            <div class="eyebrow mb-2">Galería</div>
+            <h2 class="h2 mb-2">
+                Algunos de <span class="hl">nuestros proyectos</span>
+            </h2>
+            <p class="lead">Viviendas, ampliaciones y remodelaciones en Río Tercero y zona.</p>
+
+            <!-- Filtro por categoría -->
+            {% if categorias %}
+                <div class="filtro-categorias mb-4">
+                    <a
+                        href="{% url 'proyectos' %}"
+                        class="filtro-btn {% if not categoria_activa %}filtro-btn-activo{% endif %}"
+                    >
+                        Todos
+                    </a>
+                    {% for cat in categorias %}
+                        <a
+                            href="{% url 'proyectos' %}?categoria={{ cat.slug }}"
+                            class="filtro-btn {% if categoria_activa == cat %}filtro-btn-activo{% endif %}"
+                        >
+                            {{ cat.nombre }}
+                        </a>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <!-- Grilla de proyectos -->
+            {% if proyectos %}
+                <div class="row g-4 grilla-proyectos">
+                    {% for proyecto in proyectos %}
+                        <div class="col-12 col-sm-6 col-lg-4">
+                            <a href="{% url 'proyecto_detalle' proyecto.pk %}" class="item-galeria">
+                                <img
+                                    src="{{ proyecto.foto_portada.url }}"
+                                    alt="{{ proyecto.titulo }}"
+                                    loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+                                >
+                                <div class="item-galeria-etiqueta">
+                                    {% if proyecto.categoria %}
+                                        <div class="item-cat">{{ proyecto.categoria.nombre }}</div>
+                                    {% endif %}
+                                    {{ proyecto.titulo }}
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+
+            {% else %}
+                <!-- Estado vacío -->
+                <div class="galeria-vacia">
+                    <p>Próximamente publicamos nuestros trabajos aquí.</p>
+                    <a
+                        href="https://wa.me/5493571556670"
+                        target="_blank"
+                        rel="noopener"
+                        class="btn-marca mt-3 d-inline-flex"
+                    >
+                        Consultar trabajos
+                    </a>
+                </div>
+            {% endif %}
+
+        </div>
+    </section>
+
+
+    <!-- CTA -->
+    <section class="seccion-cta seccion-oscura">
+        <div class="container">
+            <h2>¿Querés ver más o sumar tu proyecto?</h2>
+            <p class="lead">
+                Escribinos y te mostramos más detalles de obras similares a la tuya.
+            </p>
+            <a
+                href="https://wa.me/5493571556670?text=Hola%20R%C3%ADo%203%2C%20quiero%20ver%20m%C3%A1s%20proyectos."
+                target="_blank"
+                rel="noopener"
+                class="btn-marca"
+            >
+                Hablar con Río 3
+            </a>
+        </div>
+    </section>
+
+{% endblock %}

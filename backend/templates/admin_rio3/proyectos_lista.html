@@ -1,0 +1,117 @@
+{% extends "admin_rio3/base_admin.html" %}
+
+{% block titulo %}Proyectos — Panel Admin Río 3{% endblock %}
+
+{% block admin_contenido %}
+
+    <div class="admin-page-header">
+        <div>
+            <div class="eyebrow mb-1">Contenido</div>
+            <h1>Todos los proyectos</h1>
+            <p>{{ proyectos|length }} proyecto{{ proyectos|length|pluralize:"s" }} en total.</p>
+        </div>
+        <a href="{% url 'admin_proyecto_nuevo' %}" class="btn-marca">
+            + Nuevo proyecto
+        </a>
+    </div>
+
+    <div class="tabla-card">
+        <div class="table-responsive">
+            <table aria-label="Listado completo de proyectos">
+                <thead>
+                    <tr>
+                        <th scope="col">Foto</th>
+                        <th scope="col">Proyecto</th>
+                        <th scope="col">Categoría</th>
+                        <th scope="col">Ubicación</th>
+                        <th scope="col">Año</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for proyecto in proyectos %}
+                        <tr>
+                            <td>
+                                {% if proyecto.foto_portada %}
+                                    <img
+                                        src="{{ proyecto.foto_portada.url }}"
+                                        alt="Portada de {{ proyecto.titulo }}"
+                                        class="tabla-thumb"
+                                        loading="lazy"
+                                        width="48"
+                                        height="36"
+                                    >
+                                {% else %}
+                                    <div class="tabla-thumb-placeholder" aria-label="Sin foto">
+                                        <i class="ti ti-photo" aria-hidden="true"></i>
+                                    </div>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <div class="titulo-proyecto">{{ proyecto.titulo }}</div>
+                                {% if proyecto.descripcion %}
+                                    <div class="subtitulo-proyecto">{{ proyecto.descripcion|truncatechars:60 }}</div>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if proyecto.categoria %}
+                                    <span class="badge-cat">{{ proyecto.categoria.nombre }}</span>
+                                {% else %}
+                                    <span style="color:var(--color-texto-suave);font-size:12px;">—</span>
+                                {% endif %}
+                            </td>
+                            <td style="font-size:12px;color:var(--color-texto-suave);">
+                                {{ proyecto.ubicacion|default:"—" }}
+                            </td>
+                            <td style="font-family:'JetBrains Mono',monospace;font-size:12px;">
+                                {{ proyecto.anio|default:"—" }}
+                            </td>
+                            <td>
+                                {% if proyecto.esta_publicado %}
+                                    <span class="badge-estado badge-publicado">
+                                        <span class="badge-estado-dot" aria-hidden="true"></span>
+                                        Publicado
+                                    </span>
+                                {% else %}
+                                    <span class="badge-estado badge-borrador">
+                                        <span class="badge-estado-dot" aria-hidden="true"></span>
+                                        Borrador
+                                    </span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <div class="acciones-tabla" role="group" aria-label="Acciones para {{ proyecto.titulo }}">
+                                    <a
+                                        href="{% url 'admin_proyecto_editar' proyecto.pk %}"
+                                        class="btn-accion"
+                                        aria-label="Editar {{ proyecto.titulo }}"
+                                    >
+                                        <i class="ti ti-edit" aria-hidden="true"></i>
+                                    </a>
+                                    <a
+                                        href="{% url 'admin_proyecto_eliminar' proyecto.pk %}"
+                                        class="btn-accion eliminar"
+                                        aria-label="Eliminar {{ proyecto.titulo }}"
+                                    >
+                                        <i class="ti ti-trash" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="7" style="text-align:center;padding:2.5rem;color:var(--color-texto-suave);">
+                                No hay proyectos cargados todavía.
+                                <a href="{% url 'admin_proyecto_nuevo' %}" style="color:var(--color-acento-texto);">
+                                    Crear el primero →
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

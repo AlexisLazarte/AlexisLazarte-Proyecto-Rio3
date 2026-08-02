@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>{% block titulo %}Río 3 — Construcción en Seco{% endblock %}</title>
+        <meta name="description" content="{% block descripcion %}Río 3 Construcción en Seco: steel framing, drywall y revestimientos en Río Tercero, Córdoba.{% endblock %}">
+
+        {% load static %}
+
+        <!-- Bootstrap 5 (local) -->
+        <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}">
+
+        <!-- Fuentes -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+            media="print"
+            onload="this.media='all'"
+        >
+        <noscript>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
+        </noscript>
+
+        <!-- CSS global -->
+        <link rel="stylesheet" href="{% static 'css/global.css' %}">
+
+        <!-- CSS específico de página -->
+        {% block css_extra %}{% endblock %}
+    </head>
+
+    <body>
+
+        <!-- ================================================
+             NAVEGACIÓN
+             ================================================ -->
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+
+                <a href="{% url 'inicio' %}" class="navbar-brand">
+                    <div class="nav-logo-marca">
+                        <picture>
+                            <source srcset="{% static 'imagenes/logo.webp' %}" type="image/webp">
+                            <img
+                                src="{% static 'imagenes/logo.jpg' %}"
+                                alt="Logo Río 3"
+                                width="120"
+                                height="120"
+                                loading="lazy"
+                            >
+                        </picture>
+                    </div>
+                    <div>
+                        <span class="marca-nombre">RÍO 3</span>
+                        <span class="marca-sub">Construcción en seco</span>
+                    </div>
+                </a>
+
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#menuPrincipal"
+                    aria-controls="menuPrincipal"
+                    aria-expanded="false"
+                    aria-label="Abrir menú"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="menuPrincipal">
+                    <div class="navbar-nav ms-auto align-items-lg-center">
+                        <a href="{% url 'inicio' %}"
+                           class="nav-link {% if request.resolver_match.url_name == 'inicio' %}active{% endif %}">
+                            Inicio
+                        </a>
+                        <a href="{% url 'servicios' %}"
+                           class="nav-link {% if request.resolver_match.url_name == 'servicios' %}active{% endif %}">
+                            Servicios
+                        </a>
+                        <a href="{% url 'proyectos' %}"
+                           class="nav-link {% if request.resolver_match.url_name == 'proyectos' %}active{% endif %}">
+                            Proyectos
+                        </a>
+                        <a href="{% url 'nosotros' %}"
+                           class="nav-link {% if request.resolver_match.url_name == 'nosotros' %}active{% endif %}">
+                            Nosotros
+                        </a>
+                        <a href="{% url 'contacto_enviar' %}"
+                           class="nav-link {% if 'contacto' in request.resolver_match.url_name %}active{% endif %}">
+                            Contacto
+                        </a>
+                        <a
+                            href="https://wa.me/5493571556670?text=Hola%20R%C3%ADo%203%2C%20quiero%20pedir%20un%20presupuesto."
+                            target="_blank"
+                            rel="noopener"
+                            class="nav-cta ms-lg-2 mt-2 mt-lg-0"
+                        >
+                            Cotizar →
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+
+
+        <!-- Mensajes de Django (éxito, error, etc.) -->
+        {% if messages %}
+            <div class="container mt-3">
+                {% for message in messages %}
+                    <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+
+        <main>
+            {% block contenido %}{% endblock %}
+        </main>
+
+
+        <!-- ================================================
+             FOOTER
+             ================================================ -->
+        <footer class="site-footer">
+            <div class="container d-flex justify-content-between align-items-center flex-wrap gap-3">
+
+                <a href="{% url 'inicio' %}" class="footer-marca">
+                    <div class="footer-logo">
+                        <picture>
+                            <source srcset="{% static 'imagenes/logo.webp' %}" type="image/webp">
+                            <img
+                                src="{% static 'imagenes/logo.jpg' %}"
+                                alt="Logo Río 3"
+                                width="120"
+                                height="120"
+                                loading="lazy"
+                            >
+                        </picture>
+                    </div>
+                    RÍO 3 — Construcción en seco
+                </a>
+
+                <div class="footer-meta">
+                    Río Tercero, Córdoba · steel framing / drywall / revestimientos
+                </div>
+
+            </div>
+        </footer>
+
+        <!-- Bootstrap JS (local) -->
+        <script src="{% static 'bootstrap/bootstrap.bundle.min.js' %}"></script>
+
+        {% block js_extra %}{% endblock %}
+
+    </body>
+
+</html>

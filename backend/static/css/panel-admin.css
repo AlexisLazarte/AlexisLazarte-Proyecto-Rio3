@@ -1,0 +1,749 @@
+/* ============================================================
+   RÍO 3 — Construcción en Seco
+   panel-admin.css — Estilos específicos de: panel-admin.html
+   Depende de: bootstrap/bootstrap.min.css + css/global.css
+   ============================================================ */
+
+
+/* ============================================================
+   LAYOUT GENERAL DEL PANEL
+   ============================================================ */
+
+.admin-wrapper {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    min-height: calc(100vh - 75px);
+}
+
+
+/* ============================================================
+   SIDEBAR DE NAVEGACIÓN ADMIN
+   ============================================================ */
+
+.admin-sidebar {
+    background-color: #1c1f24;
+    border-right: 1px solid var(--color-borde-oscuro);
+    padding: 1.5rem 0;
+    position: sticky;
+    top: 75px;
+    height: calc(100vh - 75px);
+    overflow-y: auto;
+}
+
+.sidebar-seccion-titulo {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #4a4f58;
+    padding: 0 1.25rem;
+    margin-bottom: 6px;
+    margin-top: 1.25rem;
+}
+
+.sidebar-seccion-titulo:first-child {
+    margin-top: 0;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 1.25rem;
+    color: #9a9da3;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.15s;
+    border-left: 3px solid transparent;
+}
+
+.sidebar-link:hover {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.04);
+}
+
+.sidebar-link.active {
+    color: var(--color-acento);
+    background-color: rgba(212, 221, 46, 0.06);
+    border-left-color: var(--color-acento);
+}
+
+.sidebar-link i {
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.sidebar-badge {
+    margin-left: auto;
+    background-color: var(--color-acento);
+    color: var(--color-fondo-oscuro);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 10px;
+}
+
+
+/* ============================================================
+   CONTENIDO PRINCIPAL
+   ============================================================ */
+
+.admin-contenido {
+    background-color: var(--color-papel);
+    padding: 2rem;
+}
+
+.admin-page-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--color-borde);
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.admin-page-header h1 {
+    font-size: 22px;
+    color: var(--color-texto);
+    margin-bottom: 4px;
+}
+
+.admin-page-header p {
+    font-size: 13px;
+    color: var(--color-texto-suave);
+}
+
+
+/* ============================================================
+   TARJETAS DE MÉTRICAS
+   ============================================================ */
+
+.metrica-card {
+    background-color: #ffffff;
+    border: 1px solid var(--color-borde);
+    border-top: 3px solid var(--color-acento-dim);
+    padding: 1.25rem;
+    height: 100%;
+}
+
+.metrica-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-texto-suave);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.metrica-label i {
+    font-size: 15px;
+}
+
+.metrica-valor {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 32px;
+    color: var(--color-texto);
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.metrica-sub {
+    font-size: 12px;
+    color: var(--color-texto-suave);
+}
+
+
+/* ============================================================
+   TABLA DE PROYECTOS
+   ============================================================ */
+
+.tabla-card {
+    background-color: #ffffff;
+    border: 1px solid var(--color-borde);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.tabla-header {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--color-borde);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tabla-header h2 {
+    font-size: 15px;
+    color: var(--color-texto);
+}
+
+.tabla-buscar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--color-papel);
+    border: 1px solid var(--color-borde);
+    border-radius: 2px;
+    padding: 0 10px;
+    height: 34px;
+}
+
+.tabla-buscar input {
+    border: none;
+    background: none;
+    font-size: 13px;
+    color: var(--color-texto);
+    outline: none;
+    width: 180px;
+    font-family: 'Archivo', sans-serif;
+}
+
+.tabla-buscar i {
+    color: var(--color-texto-suave);
+    font-size: 16px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead th {
+    padding: 10px 16px;
+    text-align: left;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-texto-suave);
+    background-color: var(--color-papel);
+    border-bottom: 1px solid var(--color-borde);
+}
+
+tbody td {
+    padding: 12px 16px;
+    font-size: 13px;
+    border-bottom: 1px solid var(--color-borde);
+    vertical-align: middle;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+tbody tr:hover td {
+    background-color: var(--color-papel);
+}
+
+.tabla-thumb {
+    width: 48px;
+    height: 36px;
+    border-radius: 2px;
+    object-fit: cover;
+    display: block;
+    background-color: var(--color-papel-dim);
+}
+
+.tabla-thumb-placeholder {
+    width: 48px;
+    height: 36px;
+    border-radius: 2px;
+    background-color: var(--color-papel-dim);
+    border: 1px solid var(--color-borde);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tabla-thumb-placeholder i {
+    font-size: 16px;
+    color: var(--color-texto-suave);
+}
+
+.titulo-proyecto {
+    font-weight: 600;
+    color: var(--color-texto);
+    margin-bottom: 2px;
+}
+
+.subtitulo-proyecto {
+    font-size: 11px;
+    color: var(--color-texto-suave);
+}
+
+/* Badges de categoría */
+.badge-cat {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 2px;
+    white-space: nowrap;
+}
+
+.badge-steel {
+    background-color: #e8eaf0;
+    color: #3a4060;
+}
+
+.badge-drywall {
+    background-color: #e8f0ea;
+    color: #2d5030;
+}
+
+.badge-revestimiento {
+    background-color: #f0ebe8;
+    color: #603a2d;
+}
+
+.badge-tabique {
+    background-color: #f0f0e8;
+    color: #505030;
+}
+
+/* Badge estado */
+.badge-estado {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 2px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.badge-publicado {
+    background-color: #e1f5ee;
+    color: #0f6e56;
+}
+
+.badge-borrador {
+    background-color: var(--color-papel-dim);
+    color: var(--color-texto-suave);
+}
+
+.badge-estado-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: currentColor;
+}
+
+/* Acciones de la tabla */
+.acciones-tabla {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.btn-accion {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-borde);
+    border-radius: 2px;
+    background-color: #ffffff;
+    color: var(--color-texto-suave);
+    cursor: pointer;
+    transition: all 0.15s;
+    text-decoration: none;
+}
+
+.btn-accion:hover {
+    border-color: var(--color-acento-dim);
+    color: var(--color-acento-texto);
+    background-color: var(--color-papel);
+}
+
+.btn-accion.eliminar:hover {
+    border-color: #f09595;
+    color: #a32d2d;
+    background-color: #fcebeb;
+}
+
+.btn-accion i {
+    font-size: 15px;
+}
+
+
+/* ============================================================
+   FORMULARIO DE CARGA
+   ============================================================ */
+
+.form-card-admin {
+    background-color: #ffffff;
+    border: 1px solid var(--color-borde);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.form-card-admin-header {
+    background-color: var(--color-fondo-oscuro);
+    padding: 1rem 1.5rem;
+    border-bottom: 3px solid var(--color-acento);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.form-card-admin-header h2 {
+    color: #ffffff;
+    font-size: 15px;
+}
+
+.form-card-admin-header p {
+    color: #9a9da3;
+    font-size: 12px;
+    margin-top: 2px;
+}
+
+.nota-backend {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--color-acento);
+    opacity: 0.7;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.form-card-admin-body {
+    padding: 1.75rem;
+}
+
+/* Zona drag & drop */
+.zona-drop {
+    border: 2px dashed var(--color-borde);
+    border-radius: 3px;
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    transition: all 0.15s;
+    cursor: pointer;
+}
+
+.zona-drop:hover {
+    border-color: var(--color-acento-dim);
+    background-color: rgba(168, 176, 34, 0.04);
+}
+
+.zona-drop i {
+    font-size: 36px;
+    color: var(--color-texto-suave);
+    display: block;
+    margin-bottom: 12px;
+}
+
+.zona-drop p {
+    font-size: 14px;
+    color: var(--color-texto);
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.zona-drop span {
+    font-size: 12px;
+    color: var(--color-texto-suave);
+}
+
+.zona-drop-link {
+    color: var(--color-acento-texto);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* Grid de miniaturas */
+.grid-miniaturas {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.miniatura-item {
+    aspect-ratio: 1;
+    border-radius: 2px;
+    border: 1px solid var(--color-borde);
+    position: relative;
+    overflow: hidden;
+    background-color: var(--color-papel);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.miniatura-item.con-foto {
+    border-color: var(--color-acento-dim);
+}
+
+.miniatura-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.miniatura-remove {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: rgba(18, 20, 23, 0.75);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 11px;
+}
+
+.miniatura-add {
+    border-style: dashed;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.miniatura-add:hover {
+    border-color: var(--color-acento-dim);
+    background-color: rgba(168, 176, 34, 0.04);
+}
+
+.miniatura-add i {
+    font-size: 20px;
+    color: var(--color-texto-suave);
+}
+
+/* Separador de sección dentro del form */
+.form-seccion-titulo {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-texto-suave);
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--color-borde);
+    margin-bottom: 1rem;
+}
+
+/* Footer del formulario */
+.form-footer-admin {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-borde);
+    margin-top: 1.5rem;
+}
+
+.btn-grupo {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-borrador {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 11px 18px;
+    border: 1px solid var(--color-borde);
+    border-radius: 2px;
+    background-color: #ffffff;
+    color: var(--color-texto-suave);
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.btn-borrador:hover {
+    border-color: var(--color-acero);
+    color: var(--color-texto);
+}
+
+.btn-publicar {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 11px 20px;
+    border: none;
+    border-radius: 2px;
+    background-color: var(--color-fondo-oscuro);
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-publicar:hover {
+    background-color: var(--color-acento);
+    color: var(--color-fondo-oscuro);
+}
+
+.btn-publicar i {
+    font-size: 15px;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+
+
+/* ============================================================
+   RESPONSIVE — Panel admin
+   ============================================================ */
+
+@media (max-width: 991px) {
+
+    .admin-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-sidebar {
+        position: static;
+        height: auto;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        padding: 0.75rem 1rem;
+        border-right: none;
+        border-bottom: 1px solid var(--color-borde-oscuro);
+        overflow-y: visible;
+    }
+
+    .sidebar-seccion-titulo {
+        display: none;
+    }
+
+    .sidebar-link {
+        border-left: none;
+        border-bottom: 2px solid transparent;
+        padding: 8px 12px;
+        border-radius: 2px;
+        font-size: 12px;
+    }
+
+    .sidebar-link.active {
+        border-left: none;
+        border-bottom-color: var(--color-acento);
+        background-color: rgba(212, 221, 46, 0.08);
+    }
+
+    .admin-contenido {
+        padding: 1.25rem;
+    }
+
+    .admin-page-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .grid-miniaturas {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .tabla-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+}
+
+@media (max-width: 575px) {
+
+    .admin-sidebar {
+        padding: 0.5rem;
+        gap: 2px;
+    }
+
+    .sidebar-link {
+        font-size: 11px;
+        padding: 7px 10px;
+    }
+
+    .sidebar-link i {
+        font-size: 15px;
+    }
+
+    .admin-contenido {
+        padding: 1rem;
+    }
+
+    .metrica-card {
+        padding: 1rem;
+    }
+
+    .metrica-valor {
+        font-size: 24px;
+    }
+
+    .grid-miniaturas {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .form-card-admin-body {
+        padding: 1rem;
+    }
+
+    .form-footer-admin {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .btn-grupo {
+        width: 100%;
+    }
+
+    .btn-publicar,
+    .btn-borrador {
+        flex: 1;
+        justify-content: center;
+    }
+
+    /* Tabla — ocultar columnas menos importantes en mobile */
+    table thead th:nth-child(4),
+    table tbody td:nth-child(4) {
+        display: none;
+    }
+
+    .acciones-tabla {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .sidebar-link,
+    .btn-accion,
+    .btn-publicar,
+    .btn-borrador {
+        transition: none;
+    }
+}

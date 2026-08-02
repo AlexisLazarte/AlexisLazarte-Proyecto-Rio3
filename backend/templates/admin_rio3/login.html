@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingresar — Panel Admin Río 3</title>
+    <meta name="description" content="Acceso restringido al panel de administración de Río 3.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;600;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="{% static 'css/global.css' %}">
+    <link rel="stylesheet" href="{% static 'css/panel-admin.css' %}">
+</head>
+<body style="background-color: var(--color-fondo-oscuro); min-height: 100vh; display: flex; align-items: center; justify-content: center;">
+
+    <main>
+    <div style="width: 100%; max-width: 400px; padding: 1.5rem;">
+
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <div class="nav-logo-marca" style="margin: 0 auto 1rem; width: 56px; height: 56px;">
+                <picture>
+                    <source srcset="{% static 'imagenes/logo.webp' %}" type="image/webp">
+                    <img src="{% static 'imagenes/logo.jpg' %}" alt="Logo Río 3" width="120" height="120">
+                </picture>
+            </div>
+            <h1 style="color: #ffffff; font-size: 20px; margin-bottom: 4px;">Panel Admin</h1>
+            <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--color-acento); text-transform: uppercase; letter-spacing: 0.1em;">
+                Río 3 — Solo acceso autorizado
+            </p>
+        </div>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-danger mb-3">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+
+        <div style="background-color: #1c1f24; border: 1px solid var(--color-borde-oscuro); border-radius: 3px; padding: 2rem;">
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label class="form-label" for="username">Usuario</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="username"
+                        name="username"
+                        placeholder="Tu usuario"
+                        required
+                        autofocus
+                        autocomplete="username"
+                    >
+                </div>
+                <div class="mb-4">
+                    <label class="form-label" for="password">Contraseña</label>
+                    <input
+                        type="password"
+                        class="form-control"
+                        id="password"
+                        name="password"
+                        placeholder="Tu contraseña"
+                        required
+                        autocomplete="current-password"
+                    >
+                </div>
+                <button type="submit" class="btn-publicar w-100" style="justify-content: center;">
+                    Ingresar al panel
+                </button>
+            </form>
+        </div>
+
+        <div style="text-align: center; margin-top: 1.5rem;">
+            <a href="{% url 'inicio' %}" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #9a9da3; text-decoration: none;">
+                ← Volver al sitio
+            </a>
+        </div>
+
+    </div>
+    </main>
+
+    <script src="{% static 'bootstrap/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

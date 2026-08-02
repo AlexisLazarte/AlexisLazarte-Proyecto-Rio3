@@ -1,0 +1,140 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block titulo %}Contacto — Río 3 Construcción en Seco{% endblock %}
+{% block css_extra %}<link rel="stylesheet" href="{% static 'css/contacto.css' %}">{% endblock %}
+
+{% block contenido %}
+
+    <div class="banner-pagina">
+        <div class="container">
+            <div class="migas">
+                <a href="{% url 'inicio' %}">Inicio</a>
+                <span>/</span>
+                <span>Contacto</span>
+            </div>
+            <h1>Hablemos de tu proyecto</h1>
+        </div>
+    </div>
+
+    <section class="seccion-contacto seccion-oscura">
+        <div class="container">
+            <div class="row g-5">
+
+                <!-- DATOS DE CONTACTO -->
+                <div class="col-12 col-lg-5">
+
+                    <div class="eyebrow mb-2">Contacto directo</div>
+                    <h2 class="h2 mb-4" style="font-size: clamp(22px, 3vw, 28px);">
+                        Escribinos o llamanos
+                    </h2>
+
+                    <a class="tarjeta-contacto"
+                       href="https://wa.me/5493571556670?text=Hola%20R%C3%ADo%203%2C%20quiero%20pedir%20un%20presupuesto."
+                       target="_blank" rel="noopener">
+                        <div class="contacto-icono">📱</div>
+                        <div class="contacto-etiqueta">
+                            <strong>WhatsApp</strong>
+                            <span>+54 3571 556670</span>
+                        </div>
+                    </a>
+
+                    <a class="tarjeta-contacto" href="tel:+543571556670">
+                        <div class="contacto-icono">☎</div>
+                        <div class="contacto-etiqueta">
+                            <strong>Teléfono 1</strong>
+                            <span>3571 556670</span>
+                        </div>
+                    </a>
+
+                    <a class="tarjeta-contacto" href="tel:+543425214703">
+                        <div class="contacto-icono">☎</div>
+                        <div class="contacto-etiqueta">
+                            <strong>Teléfono 2</strong>
+                            <span>3425 214703</span>
+                        </div>
+                    </a>
+
+                    <a class="tarjeta-contacto" href="mailto:contacto@rio3construcciones.com">
+                        <div class="contacto-icono">✉</div>
+                        <div class="contacto-etiqueta">
+                            <strong>Email</strong>
+                            <span>contacto@rio3construcciones.com</span>
+                        </div>
+                    </a>
+
+                </div>
+
+                <!-- FORMULARIO -->
+                <div class="col-12 col-lg-7">
+                    <div class="panel-formulario">
+
+                        <h3>Pedí tu presupuesto</h3>
+
+                        <form action="{% url 'contacto_enviar' %}" method="post" novalidate>
+                            {% csrf_token %}
+
+                            <div class="row g-3">
+
+                                <div class="col-12">
+                                    <label class="form-label" for="{{ form.nombre.id_for_label }}">
+                                        {{ form.nombre.label }}
+                                    </label>
+                                    {{ form.nombre }}
+                                    {% if form.nombre.errors %}
+                                        <div class="invalid-feedback d-block">
+                                            {{ form.nombre.errors|join:", " }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <label class="form-label" for="{{ form.telefono.id_for_label }}">
+                                        {{ form.telefono.label }}
+                                    </label>
+                                    {{ form.telefono }}
+                                    {% if form.telefono.errors %}
+                                        <div class="invalid-feedback d-block">
+                                            {{ form.telefono.errors|join:", " }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <label class="form-label" for="{{ form.email.id_for_label }}">
+                                        {{ form.email.label }}
+                                    </label>
+                                    {{ form.email }}
+                                </div>
+
+                                <div class="col-12">
+                                    <label class="form-label" for="{{ form.servicio.id_for_label }}">
+                                        {{ form.servicio.label }}
+                                    </label>
+                                    {{ form.servicio }}
+                                </div>
+
+                                <div class="col-12">
+                                    <label class="form-label" for="{{ form.mensaje.id_for_label }}">
+                                        {{ form.mensaje.label }}
+                                    </label>
+                                    {{ form.mensaje }}
+                                </div>
+
+                                <div class="col-12">
+                                    <button type="submit" class="btn-enviar">
+                                        Enviar consulta
+                                    </button>
+                                </div>
+
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
