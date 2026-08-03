@@ -1117,11 +1117,8 @@ h5 {
    FIX GLOBAL — prevenir scroll horizontal en mobile
    ============================================================ */
 
-html {
-    overflow-x: clip;
-}
-
 body {
+    overflow-x: hidden;
     max-width: 100%;
 }
 
@@ -1131,16 +1128,14 @@ body {
     box-sizing: border-box;
 }
 
-/* Prevenir que imágenes desborden */
 img {
     max-width: 100%;
     height: auto;
 }
 
-/* Contenedores que pueden desbordar en mobile */
 .container,
 .container-fluid {
-    overflow-x: hidden;
+    overflow-x: visible;
 }
 
 /* ============================================================
