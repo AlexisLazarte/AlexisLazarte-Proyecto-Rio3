@@ -374,9 +374,10 @@ h5 {
     overflow: hidden;
     white-space: nowrap;
     border-bottom: 3px solid var(--color-fondo-oscuro);
+    position: relative;
     width: 100%;
-    max-width: 100vw;
-    /* Importante: no usar width ni max-width aquí */
+    left: 0;
+    right: 0;
 }
 
 .strip-pista {
@@ -1119,10 +1120,8 @@ h5 {
    FIX GLOBAL — prevenir scroll horizontal en mobile
    ============================================================ */
 
-body {
-    overflow-x: hidden;
-    max-width: 100vw;
-}
+html,
+
 
 *,
 *::before,
@@ -1130,22 +1129,14 @@ body {
     box-sizing: border-box;
 }
 
+/* Prevenir que imágenes desborden */
 img {
     max-width: 100%;
     height: auto;
 }
 
+/* Contenedores que pueden desbordar en mobile */
 .container,
 .container-fluid {
-    overflow-x: visible;
-}
-
-/* ============================================================
-   NAVBAR FIJO (sticky)
-   ============================================================ */
-
-.navbar {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    overflow-x: hidden;
 }
