@@ -1117,9 +1117,11 @@ h5 {
    FIX GLOBAL — prevenir scroll horizontal en mobile
    ============================================================ */
 
-html,
+html {
+    overflow-x: clip;
+}
+
 body {
-    overflow-x: hidden;
     max-width: 100%;
 }
 
