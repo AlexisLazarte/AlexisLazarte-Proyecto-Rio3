@@ -157,8 +157,18 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'    # donde collectstatic pone todo
 STATICFILES_DIRS = [BASE_DIR / 'static']  # donde Django busca los archivos
 
 # WhiteNoise: compresión y caché de archivos estáticos
+"""
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
+"""
+# Usar la nueva configuración STORAGES compatible con Django 5.0+
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
+    },
+}
 
 # ============================================================
 # ARCHIVOS MEDIA (fotos subidas por el admin)
@@ -220,7 +230,7 @@ if not DEBUG:
     SECURE_BROWSER_XSS_FILTER       = True
     SECURE_CONTENT_TYPE_NOSNIFF     = True
     X_FRAME_OPTIONS                 = 'DENY'
-    SECURE_SSL_REDIRECT             = True
+    SECURE_SSL_REDIRECT             = False # <-- Cambiar a False (Render ya maneja SSL)
     SESSION_COOKIE_SECURE           = True
     CSRF_COOKIE_SECURE              = True
     SECURE_HSTS_SECONDS             = 31536000
