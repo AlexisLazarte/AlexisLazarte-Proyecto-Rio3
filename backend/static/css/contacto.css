@@ -44,3 +44,33 @@
     }
 
 }
+
+
+/* ============================================================
+   FIX RESPONSIVE — contacto
+   ============================================================ */
+
+.panel-formulario {
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
+.tarjeta-contacto {
+    word-break: break-word;
+}
+
+@media (max-width: 575px) {
+
+    .seccion-contacto .container {
+        overflow-x: hidden;
+    }
+
+    .panel-formulario {
+        padding: 1.25rem;
+    }
+
+    .tarjeta-contacto {
+        padding: 0.85rem 1rem;
+    }
+
+}

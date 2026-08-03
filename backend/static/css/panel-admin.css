@@ -619,6 +619,19 @@ tbody tr:hover td {
    RESPONSIVE — Panel admin
    ============================================================ */
 
+/* Fix scroll horizontal global del admin */
+.admin-wrapper,
+.admin-sidebar,
+.admin-contenido {
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
+.navbar .container-fluid {
+    flex-wrap: nowrap;
+    overflow: hidden;
+}
+
 @media (max-width: 991px) {
 
     .admin-wrapper {
@@ -635,6 +648,26 @@ tbody tr:hover td {
         border-right: none;
         border-bottom: 1px solid var(--color-borde-oscuro);
         overflow-y: visible;
+        overflow-x: hidden;
+        width: 100%;
+    }
+
+    /* Navbar admin en mobile */
+    .navbar .d-flex.align-items-center.gap-3 {
+        gap: 6px !important;
+    }
+
+    .nav-cta {
+        font-size: 10px !important;
+        padding: 6px 10px !important;
+    }
+
+    .marca-nombre {
+        font-size: 13px;
+    }
+
+    .marca-sub {
+        font-size: 9px;
     }
 
     .sidebar-seccion-titulo {
